@@ -26,44 +26,44 @@ DoubleVec::DoubleVec(int n)
     data = d;
 }
 
-DoubleVec::DoubleVec( const vector<double>& v )
+DoubleVec::DoubleVec(const vector<double> &v)
 {
     // Initialization giving a DoubleVec whose vector is
     // a deep copy of the input vec.
     // Why take in a reference to a vector and then not just take that vector directly?
     // Dunno, sorry. I'm not very good at this.
 
-    vector<double> d( v.size() );
+    vector<double> d(v.size());
     copy(v.begin(), v.end(), d.begin());
     data = d;
 }
 
-DoubleVec::DoubleVec( const DoubleVec& v )
+DoubleVec::DoubleVec(const DoubleVec &v)
 {
     data = v.deep_copy().data;
 }
 
-DoubleVec::DoubleVec( int n, double x )
+DoubleVec::DoubleVec(int n, double x)
 {
     // This initialization gives an n-dimensional vector containing x n times.
-    vector<double> data(n); 
+    vector<double> data(n);
 
     // there has to be a better algorithm than this...
     std::transform(data.begin(), data.end(),
-                   data.begin(), [x](double y){ return x; });
+                   data.begin(), [x](double y)
+                   { return x; });
 }
 
-DoubleVec::DoubleVec( double start, double end, double step )
+DoubleVec::DoubleVec(double start, double end, double step)
 {
     vector<double> data;
-    double add( start );
-    while( add < end )
+    double add(start);
+    while (add < end)
     {
-        data.push_back( add );
+        data.push_back(add);
         add += step;
     }
 }
-
 
 using namespace std;
 
@@ -79,18 +79,18 @@ DoubleVec::DoubleVec(string filename, int column_number, int start_row)
     csv.open(filename);
     int row_num(0);
     int col_num;
-    while( getline( csv, line ) )
+    while (getline(csv, line))
     {
-        if( row_num >= start_row )
+        if (row_num >= start_row)
         {
             stringstream ss(line);
             col_num = 0;
-            while( col_num <= column_number )
+            while (col_num <= column_number)
             {
                 getline(ss, segment, separator);
                 col_num++;
             }
-            v.push_back( stof( segment ) );
+            v.push_back(stof(segment));
         }
         row_num++;
     }

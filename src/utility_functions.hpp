@@ -11,14 +11,13 @@ namespace util
         Determine whether two numbers are arbitrarily close.
         Numerical precision is given by 1e-8 by default but can be changed.
     */
-    bool close(double x, double y=0.0, double epsilon=1e-8);
+    bool close(double x, double y = 0.0, double epsilon = 1e-8);
 
     /*
         Determine whether an int is present in a vector.
     */
-    bool int_in_vector( int n, std::vector<int>& v);
+    bool int_in_vector(int n, std::vector<int> &v);
 
 }
-
 
 #endif
