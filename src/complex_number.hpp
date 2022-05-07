@@ -128,7 +128,9 @@ Complex horner_polynomial(const std::vector<Complex> &v, const Complex z);
     given coefficients an, ... a0 (real), return the roots of the polynomial
     anz^n + ... + a0
 */
-std::vector<Complex> durand_kerner(const std::vector<double> &coefficients);
+std::vector<Complex> durand_kerner(const std::vector<double> &coefficients,
+                                   double tolerance=1e-4,
+                                   int n_iterations=1000);
 
 /*
     turn a vector of real numbers into complex numbers

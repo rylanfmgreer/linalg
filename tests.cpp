@@ -1,13 +1,5 @@
 #include <iostream>
 #include <cmath>
-
-/*
-#include "src/doublevec.hpp"
-#include "src/matrix.hpp"
-#include "src/utility_functions.hpp"
-#include "src/recombining_tree.hpp"
-#include "src/parameterized_function.hpp"
-*/
 #include "all_headers.hpp"
 
 using namespace std;
@@ -640,7 +632,21 @@ bool test38()
     
 }
 
+// complex addition
+bool test39()
+{
+    Complex z(1, 2);
+    Complex w(3, 4);
+    Complex x(4, 6);
+    return (z + w) == x;
+}
 
+// complex angle
+bool test40()
+{
+    Complex z(0, 1);
+    return z.angle() == (M_PI / 2);
+}
 
 int main()
 {
@@ -685,6 +691,8 @@ int main()
     cout << " Test  36 results:   " << test36()  << endl;
     cout << " Test  37 results:   " << test37()  << endl;
     cout << " Test  38 results:   " << test38()  << endl;
+    cout << " Test  39 results    " << test39()  << endl;
+    cout << " Test  40 results    " << test40()  << endl;
 
     cout << endl;
 

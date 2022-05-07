@@ -2,15 +2,14 @@
 #include <iostream>
 using namespace std;
 
-std::vector<Complex> durand_kerner(const std::vector<double> &coefficients)
+std::vector<Complex> durand_kerner(const std::vector<double> &coefficients,
+                                   double tolerance, int n_iterations)
 {
     // https://en.wikipedia.org/wiki/Durand%E2%80%93Kerner_method
     // no trickery -- let's not assume the leading coefficient is 1
     vector<Complex> old_roots(coefficients.size() - 1);
     vector<Complex> new_roots(coefficients.size() - 1);
     vector<Complex> complex_coefficients(coefficients.size());
-    double tolerance = 1e-4;
-    int n_iterations = 1000;
 
     // set up initial guesses
     Complex root = Complex(1, 0);
