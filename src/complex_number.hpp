@@ -29,6 +29,13 @@ class Complex
         */
         Complex operator+ ( const Complex& z ) const;
 
+
+        /*
+            complex + double
+            a + bi + c = (a + c) + bi
+        */
+        Complex operator+ ( double x ) const;
+
         /* 
             subtract a real scalar from a complex number
         */

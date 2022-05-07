@@ -8,6 +8,7 @@ Complex Complex::operator+(const Complex& z ) const
     return Complex( new_re, new_im );
 }
 
+
 Complex Complex::operator-(const Complex& z ) const
 {
     double new_re = this->re - z.re;
@@ -15,12 +16,15 @@ Complex Complex::operator-(const Complex& z ) const
     return Complex( new_re, new_im );
 }
 
+
 Complex Complex::operator*( const Complex& z) const
 {
     double new_re = this->re * z.re - this->im * z.im;
     double new_im = this->re * z.im + this->im * z.re;
     return Complex( new_re, new_im );
 }
+
+
 Complex Complex::operator*( double x) const
 {
     double new_re = x * this->re;
@@ -28,12 +32,14 @@ Complex Complex::operator*( double x) const
     return Complex( new_re, new_im );
 }
 
-Complex Complex::operator+( double x) const
+
+Complex Complex::operator+( double x ) const
 {
     double new_re = this->re + x;
     double new_im = this->im;
     return Complex( new_re, new_im );
 }
+
 
 Complex Complex::operator/( double x) const
 {
@@ -42,11 +48,13 @@ Complex Complex::operator/( double x) const
     return Complex( new_re, new_im );
 }
 
+
 Complex Complex::operator/( const Complex& z) const
 {
     Complex w = z.inverse();
     return (*this) * w;
 }
+
 
 bool Complex::operator==( const Complex& z) const
 {
