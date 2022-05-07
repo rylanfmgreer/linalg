@@ -42,3 +42,17 @@ std::vector< Complex > double_to_complex( const std::vector<double>& coefficient
                []( double x ){ return Complex( x, 0 ); });
     return new_coeffs;
 }
+
+
+double radian_to_degrees( double r )
+{
+    double x = (360. / (2. * M_PI));
+    return r * x;
+}
+
+
+double degrees_to_radian( double d )
+{
+    double x = 2 * M_PI / 360.;
+    return d * x;
+}

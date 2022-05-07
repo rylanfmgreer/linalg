@@ -101,6 +101,15 @@ class Complex
         Complex conjugate() const;
         Complex conj() const;
 
+
+        /*
+            For a complex number z, 
+            z = r * exp(it)
+            return t in [0, 2 * pi)
+        */
+        double angle() const;
+        double theta() const;
+
         /*
             Returns a copy of the complex number
         */
@@ -131,6 +140,15 @@ std::vector< Complex > durand_kerner( const std::vector<double>& coefficients);
 /*
     turn a vector of real numbers into complex numbers
 */
-std::vector< Complex > double_to_complex( const std::vector<double>& coefficients);
+std::vector< Complex > double_to_complex( 
+    const std::vector<double>& coefficients);
+
+
+
+/*
+    convert degrees to radians and vice versa
+*/
+double degrees_to_radians( double d );
+double radians_to_degrees( double r );
 
 #endif
