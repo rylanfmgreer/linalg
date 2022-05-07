@@ -59,6 +59,13 @@ class Complex
         */
         bool operator==( const Complex& z ) const;
 
+
+        /*
+            simple negation of == operator.
+        */
+        bool operator!=( const Complex& z ) const;
+
+
         /*
             Multiplication of two complex numbers
         */
@@ -86,6 +93,13 @@ class Complex
             wz = zw = 1
         */
         Complex inverse() const;
+
+
+        /*
+            Returns the complex number's conjugate
+        */
+        Complex conjugate() const;
+        Complex conj() const;
 
         /*
             Returns a copy of the complex number

@@ -88,9 +88,6 @@ bool DoubleVec::operator==( const DoubleVec& v ) const
 
 bool DoubleVec::operator!=( const DoubleVec& v ) const
 {
-    // slightly more efficient implementation than
-    // simply negating operator==
-
     if ( v.size() != data.size() )
         return true;
     for( int i(0); i < v.size(); ++i )

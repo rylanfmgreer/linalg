@@ -60,3 +60,9 @@ bool Complex::operator==( const Complex& z) const
 {
     return (re == z.re) && (im == z.im);
 }
+
+
+bool Complex::operator!=( const Complex& z ) const
+{
+    return (re != z.re) || (im != z.im);
+}
