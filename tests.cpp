@@ -648,6 +648,18 @@ bool test40()
     return z.angle() == (M_PI / 2);
 }
 
+// a few complex tasks...
+bool test41()
+{
+    Complex z(1, 1);
+    double r = sqrt(2);
+    assert( z.magnitude() == r );
+
+    Complex w = z + 1.;
+    return w.re == 2.;
+
+}
+
 int main()
 {
     cout << endl << endl;
@@ -693,6 +705,7 @@ int main()
     cout << " Test  38 results:   " << test38()  << endl;
     cout << " Test  39 results    " << test39()  << endl;
     cout << " Test  40 results    " << test40()  << endl;
+    cout << " Test  41 results    " << test41()  << endl;
 
     cout << endl;
 

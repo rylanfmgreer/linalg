@@ -20,10 +20,21 @@ Complex Complex::operator+(const double x) const
     return Complex(re + x, im);
 }
 
+Complex Complex::operator+(const int n) const
+{
+    return Complex(re + n, im);
+}
+
 Complex Complex::operator-(const double x) const
 {
     return (*this) + (-x);
 }
+
+Complex Complex::operator-(const int n) const
+{
+    return (*this) + (-n);
+}
+
 
 Complex Complex::operator*(const Complex &z) const
 {

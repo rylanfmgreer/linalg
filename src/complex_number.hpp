@@ -33,11 +33,13 @@ public:
         a + bi + c = (a + c) + bi
     */
     Complex operator+(double x) const;
+    Complex operator+(int n) const;
 
     /*
         subtract a real scalar from a complex number
     */
     Complex operator-(double x) const;
+    Complex operator-(int n) const;
 
     /*
         divide a complex number by a real scalar
@@ -143,5 +145,7 @@ std::vector<Complex> double_to_complex(
 */
 double degrees_to_radians(double d);
 double radians_to_degrees(double r);
+
+
 
 #endif

@@ -10,7 +10,7 @@ double Complex::magnitude() const
 Complex Complex::inverse() const
 {
     /*
-        (a + bi) * (c + di) = 1 + 0i
+        (a + bi) * (c + di) = 1 + 0ir
         ac - bd = 1
         ad + bc = 0
         [a b] c = 1
