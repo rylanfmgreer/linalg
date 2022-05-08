@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include "all_headers.hpp"
+#include <iostream>
 
 using namespace std;
 
@@ -660,6 +661,14 @@ bool test41()
 
 }
 
+// inverting a complex number
+bool test42()
+{
+    Complex z(12, 320);
+    Complex w = z * z.inverse();
+    return (z * z.inverse()) == 1.;
+}
+
 int main()
 {
     cout << endl << endl;
@@ -706,6 +715,7 @@ int main()
     cout << " Test  39 results    " << test39()  << endl;
     cout << " Test  40 results    " << test40()  << endl;
     cout << " Test  41 results    " << test41()  << endl;
+    cout << " Test  42 results    " << test42()  << endl;
 
     cout << endl;
 

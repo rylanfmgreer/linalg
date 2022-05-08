@@ -99,3 +99,20 @@ DoubleVec DoubleVec::drop_index(std::vector<int> v) const
     }
     return new_vec;
 }
+
+double DoubleVec::sq_norm() const
+{
+    double s(0);
+    double x;
+    for( int i(0); i < this->size(); ++i )
+    {
+        x = this->get(i);
+        s += x * x;
+    }
+    return sqrt(s);
+}
+
+double DoubleVec::norm() const
+{
+    return sqrt( this->sq_norm() );
+}

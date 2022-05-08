@@ -4,6 +4,8 @@
 #define complex_numbers_12903u1290
 
 #include <vector>
+#include "utility_functions.hpp"
+
 class Complex
 {
 public:
@@ -58,6 +60,12 @@ public:
         a == c & b == d
     */
     bool operator==(const Complex &z) const;
+    
+    /*
+        z = a + bi
+        a == x & b == 0
+    */
+    bool operator==(const double x) const;
 
     /*
         simple negation of == operator.

@@ -175,7 +175,9 @@ public:
     double cor(const DoubleVec &v) const;
 
     // other often useful functions
-    DoubleVec cumsum() const;
+    DoubleVec cumsum() const; // cumulative sum
+    double sq_norm() const;   // squared euclidean norm
+    double norm() const;      // euclidean norm
 
     // member data
     std::vector<double> data;

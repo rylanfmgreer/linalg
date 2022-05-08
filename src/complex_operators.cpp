@@ -65,7 +65,12 @@ Complex Complex::operator/(const Complex &z) const
 
 bool Complex::operator==(const Complex &z) const
 {
-    return (re == z.re) && (im == z.im);
+    return util::close(re, z.re) && util::close(im, z.im);
+}
+
+bool Complex::operator==(const double x) const
+{
+    return util::close(re, x) && util::close(im, 0.);
 }
 
 bool Complex::operator!=(const Complex &z) const

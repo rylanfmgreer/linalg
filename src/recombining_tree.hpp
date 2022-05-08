@@ -4,23 +4,33 @@
 #define recombining_tree_hpp_fasaa
 
 #include "doublevec.hpp"
+#include "parameterized_function.hpp"
 
 class RecombiningTree
 {
 public:
-    RecombiningTree();
+
     RecombiningTree(int n, double u, double r); // d = 1/u
+
+    // american option
     RecombiningTree(int n, double u, double r,
-                    std::function<double(double)> final_function,
-                    std::function<double(double)> intermediate_function);
+                    ParameterizedFunction final_function,
+                    ParameterizedFunction intermediate_function);
+
+    // european option
+    RecombiningTree(int n, double u, double r,
+                    ParameterizedFunction final_function);
+
+    // price the option
     double price();
 
 private:
+    RecombiningTree();
     int n;
     double u;
     double r;
-    std::function<double(double)> final;
-    std::function<double(double)> intermediate;
+    ParameterizedFunction final;
+    ParameterizedFunction intermediate;
 
 }; // end of class RecombiningTree
 
