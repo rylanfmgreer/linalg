@@ -18,6 +18,14 @@ namespace util
     */
     bool int_in_vector(int n, std::vector<int> &v);
 
+
+    /*
+        Determine whether a number arbitrarily close to
+        x is in a vector
+    */
+   bool double_in_vector(double x, std::vector<double> &v,
+                         double epsilon=1e-8);
+
 }
 
 #endif

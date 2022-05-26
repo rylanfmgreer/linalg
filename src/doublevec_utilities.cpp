@@ -18,7 +18,7 @@ DoubleVec DoubleVec::elementwise(const DoubleVec &w) const
     vector<double> new_vector(this->size());
     transform(data.begin(), data.end(),
               w.data.begin(), new_vector.begin(),
-              [](double x, double y)
+              [ ](double x, double y)
               { return x * y; });
     return DoubleVec(new_vector);
 }

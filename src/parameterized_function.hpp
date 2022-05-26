@@ -23,7 +23,7 @@ public:
     ParameterizedFunction(two_vec_func f, DoubleVec params);
 
     DoubleVec operator()(DoubleVec x);
-
+    
     void set_x(DoubleVec x);
     void set_W(DoubleVec W);
     void set_function(two_vec_func f);

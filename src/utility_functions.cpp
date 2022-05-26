@@ -20,4 +20,14 @@ namespace util
         }
         return false;
     }
+
+    bool double_in_vector(double x, vector<double> &v, double epsilon)
+    {
+        for( int i(0); i < v.size(); ++i )
+        {
+            if close(v[i], x, epsilon)
+                return true;
+        }
+        return false;
+    }
 } // of namespace
