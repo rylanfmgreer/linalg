@@ -1,5 +1,5 @@
-#include "matrix.hpp"
-#include "utility_functions.hpp"
+#include "../matrix.hpp"
+#include "../utility_functions.hpp"
 
 using namespace std;
 using namespace util;

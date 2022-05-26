@@ -25,7 +25,7 @@ namespace util
     {
         for( int i(0); i < v.size(); ++i )
         {
-            if close(v[i], x, epsilon)
+            if( close(v[i], x, epsilon) )
                 return true;
         }
         return false;

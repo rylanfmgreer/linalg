@@ -4,6 +4,7 @@
 #define complex_numbers_12903u1290
 
 #include <vector>
+#include "doublevec.hpp"
 #include "utility_functions.hpp"
 
 class Complex
@@ -147,6 +148,17 @@ std::vector<Complex> durand_kerner(const std::vector<double> &coefficients,
 */
 std::vector<Complex> double_to_complex(
     const std::vector<double> &coefficients);
+
+/*
+    turn two vectors of real numbers into a vector of
+    complex numbers
+*/
+std::vector<Complex> create_complex_vector(
+    const std::vector<double> &re, 
+    const std::vector<double> &im);
+
+std::vector<Complex> create_complex_vector(
+    const DoubleVec &re, const DoubleVec &im);
 
 /*
     convert degrees to radians and vice versa

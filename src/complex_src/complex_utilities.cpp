@@ -1,13 +1,14 @@
 #include <cmath>
 #include <iostream>
-#include "complex_number.hpp"
-#include "utility_functions.hpp"
+#include "../complex_number.hpp"
+#include "../utility_functions.hpp"
 using namespace std;
 
 double Complex::magnitude() const
 {
     return sqrt(re * re + im * im);
 }
+
 Complex Complex::inverse() const
 {
     /*
@@ -53,4 +54,26 @@ double degrees_to_radian(double d)
 {
     double x = 2 * M_PI / 360.;
     return d * x;
+}
+
+std::vector<Complex> create_complex_vector(
+    const std::vector<double> &re, 
+    const std::vector<double> &im)
+{
+    assert( re.size() == im.size() );
+    std::vector<Complex> out(re.size());
+
+    std::transform(re.begin(), re.end(),
+                   im.begin(), out.begin(),
+                   [](double x, double y){
+                       return Complex(x, y);
+                   }
+    );
+    return out;
+}
+
+std::vector<Complex> create_complex_vector(
+    const DoubleVec &re, const DoubleVec &im)
+{
+    return create_complex_vector(re.data, im.data);
 }
