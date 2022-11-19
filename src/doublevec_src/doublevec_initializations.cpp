@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include "../doublevec.hpp"
+#include "doublevec.hpp"
 #include "../utility_functions.hpp"
 
 using namespace std;

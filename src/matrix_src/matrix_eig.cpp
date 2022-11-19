@@ -1,2 +1,2 @@
-#include "../matrix.hpp"
+#include "matrix.hpp"
 // todo: write :-)

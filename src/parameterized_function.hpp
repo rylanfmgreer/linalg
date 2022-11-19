@@ -2,7 +2,7 @@
 #ifndef parameterized_function_ohgoodlordx__
 #define parameterized_function_ohgoodlordx__
 
-#include "doublevec.hpp"
+#include "doublevec_src/doublevec.hpp"
 
 // type signature is too long...!
 typedef std::function<DoubleVec(DoubleVec, DoubleVec)> two_vec_func;

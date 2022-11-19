@@ -3,7 +3,7 @@
 #ifndef recombining_tree_hpp_fasaa
 #define recombining_tree_hpp_fasaa
 
-#include "doublevec.hpp"
+#include "doublevec_src/doublevec.hpp"
 #include "parameterized_function.hpp"
 
 class RecombiningTree
