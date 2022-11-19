@@ -198,3 +198,20 @@ Matrix Matrix::invert() const
 {
     return inv(this->deep_copy());
 }
+
+bool Matrix::is_symmetric() const
+{
+    if( !this->is_square() )
+        return false;
+
+    for(int r(1); r < this->nrow(); ++r)
+    {
+        for( int c(0); c < r; ++c)
+        {
+            if( this->get(r, c) != this->get(c, r) )
+                return false;
+        }
+    }
+    
+    return true;
+}

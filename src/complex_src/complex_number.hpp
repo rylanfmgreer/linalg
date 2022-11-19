@@ -4,8 +4,8 @@
 #define complex_numbers_12903u1290
 
 #include <vector>
-#include "doublevec.hpp"
-#include "utility_functions.hpp"
+#include "../../all_headers.hpp"
+#include "../utility_functions.hpp"
 
 class Complex
 {

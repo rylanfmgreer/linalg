@@ -1,4 +1,4 @@
-#include "../complex_number.hpp"
+#include "complex_number.hpp"
 using namespace std;
 
 Complex Complex::operator+(const Complex &z) const

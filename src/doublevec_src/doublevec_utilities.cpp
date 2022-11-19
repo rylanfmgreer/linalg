@@ -102,14 +102,12 @@ DoubleVec DoubleVec::drop_index(std::vector<int> v) const
 
 double DoubleVec::sq_norm() const
 {
-    double s(0);
-    double x;
-    for( int i(0); i < this->size(); ++i )
-    {
-        x = this->get(i);
-        s += x * x;
-    }
-    return sqrt(s);
+    double sum_squares(0.);
+    std::for_each(data.begin(), data.end(),
+                  [&sum_squares](double x)
+                  { sum_squares += x * x; }
+    );
+    return sum_squares;
 }
 
 double DoubleVec::norm() const
