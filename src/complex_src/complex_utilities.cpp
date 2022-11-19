@@ -1,6 +1,6 @@
 #include <cmath>
 #include <iostream>
-#include "../complex_number.hpp"
+#include "complex_number.hpp"
 #include "../utility_functions.hpp"
 using namespace std;
 

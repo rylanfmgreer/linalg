@@ -233,6 +233,11 @@ public:
     */
     void swap_rows(int r1, int r2);
 
+    /*
+        Determine whether a matrix is symmetric
+    */
+    bool is_symmetric() const;
+
 private:
     /*
         The columns of the matrix.

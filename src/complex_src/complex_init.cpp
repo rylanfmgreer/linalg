@@ -1,4 +1,4 @@
-#include "../complex_number.hpp"
+#include "complex_number.hpp"
 
 Complex::Complex()
 {
