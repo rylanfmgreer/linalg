@@ -1,5 +1,7 @@
 #include "../doublevec.hpp"
 #include <cmath>
+#include <numeric>
+
 using namespace std;
 
 /*
@@ -11,12 +13,7 @@ using namespace std;
 // Sum
 double DoubleVec::sum() const
 {
-    double s(0);
-    for (int i(0); i < data.size(); ++i)
-    {
-        s += data[i];
-    }
-    return s;
+    return std::accumulate(data.begin(), data.end(), 0.);
 }
 
 double sum(const DoubleVec &v)

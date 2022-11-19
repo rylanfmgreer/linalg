@@ -9,9 +9,7 @@ class MachineLearning
 {
     public:
     virtual MachineLearning() = 0;
-    virtual fit()
-
-    private:
-    std::vector<M
+    virtual void fit();
+    // not clear what output predict should have -- doublevec or matrix?
 
 };

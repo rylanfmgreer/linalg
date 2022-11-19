@@ -1,6 +1,9 @@
 // regression.hpp
 // author: rgreer
 
+#ifndef __regression_header_128___
+#define __regression_header_128___
+
 #include "doublevec.hpp"
 #include "matrix.hpp"
 #include "parameterized_function.hpp"
@@ -20,3 +23,5 @@ class LinearRegression
     DoubleVec beta;
     
 }; // end of class
+
+#endif

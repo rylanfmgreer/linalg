@@ -4,3 +4,4 @@
 #include "src/recombining_tree.hpp"
 #include "src/parameterized_function.hpp"
 #include "src/complex_number.hpp"
+#include "src/ndarray.hpp"

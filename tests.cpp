@@ -669,6 +669,21 @@ bool test42()
     return (z * z.inverse()) == 1.;
 }
 
+// ndarray stuff
+bool test43()
+{
+    std::vector<unsigned int> v{4, 5, 2, 1, 0, 9};
+    std::vector<unsigned int> res{2, 1, 3, 4, 5, 0};
+    std::vector<unsigned int> calc = util::argsort(v);
+    for( int i(0); i < v.size(); ++i)
+    {
+        cout << calc[i] << ' ' << res[i] << endl;
+        //assert( calc[i] == res[i] );
+    }
+    return true;
+
+}
+
 int main()
 {
     cout << endl << endl;
@@ -716,6 +731,7 @@ int main()
     cout << " Test  40 results    " << test40()  << endl;
     cout << " Test  41 results    " << test41()  << endl;
     cout << " Test  42 results    " << test42()  << endl;
+    cout << " Test  43 results    " << test43()  << endl;
 
     cout << endl;
 
