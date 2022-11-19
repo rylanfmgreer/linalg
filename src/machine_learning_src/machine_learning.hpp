@@ -4,8 +4,8 @@
 
 #ifndef machine_learning_header_just_abstract_xx
 #define machine_learning_header_just_abstract_xx
-#include "../doublevec.hpp"
-#include "../matrix.hpp"
+#include "../doublevec_src/doublevec.hpp"
+#include "../matrix_src/matrix.hpp"
 
 class MachineLearning
 {

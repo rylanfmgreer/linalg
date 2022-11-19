@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include "../matrix.hpp"
+#include "matrix.hpp"
 using namespace std;
 
 namespace utils

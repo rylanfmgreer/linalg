@@ -1,4 +1,4 @@
-#include "../matrix.hpp"
+#include "matrix.hpp"
 #include "../utility_functions.hpp"
 
 using namespace std;

@@ -1,5 +1,5 @@
 #include <cmath>
-#include "../doublevec.hpp"
+#include "doublevec.hpp"
 
 using namespace std;
 

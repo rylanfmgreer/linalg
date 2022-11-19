@@ -1,4 +1,4 @@
-#include "doublevec.hpp"
+#include "doublevec_src/doublevec.hpp"
 #include "parameterized_function.hpp"
 
 DoubleVec gradient(std::function<double(DoubleVec)> f,

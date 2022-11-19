@@ -2,7 +2,7 @@
 #ifndef _matrix_hpp_fosun___
 #define _matrix_hpp_fosun___
 
-#include "doublevec.hpp"
+#include "../doublevec_src/doublevec.hpp"
 #include <vector>
 
 class Matrix
