@@ -244,6 +244,16 @@ public:
     */
     DoubleVec mean_by_col() const;
 
+    /*
+        Apply a function by columns.
+    */
+    DoubleVec function_by_col(std::function<double(DoubleVec)> f) const;
+
+    /*
+        Apply a function by rows.
+    */
+    DoubleVec function_by_row(std::function<double(DoubleVec)> f) const;
+
 private:
     /*
         The columns of the matrix.

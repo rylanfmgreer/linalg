@@ -35,6 +35,9 @@ namespace util
     std::vector<unsigned int> argsort( const std::vector<unsigned int>& v);
 
     int rand_with_max_n(int n);
+
+    double crude_uniform_rv();
+    double crude_normal_rv();
 }
 
 #endif

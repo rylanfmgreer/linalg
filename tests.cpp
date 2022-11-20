@@ -7,7 +7,7 @@ using namespace std;
 
 /*
     Testing file for linear algebra pack
-    These are quite simple and should provide a 
+    These are quite simple and should provide a
     decent gut check, although not an especially
     thorough review.
 */
@@ -27,7 +27,7 @@ bool test1()
 
     c[0] = 7;
     c[1] = 16;
-    return ( (a + b) == c );
+    return ((a + b) == c);
 }
 
 // Test 2: Scalar multiplication of a vector
@@ -94,7 +94,7 @@ bool test5()
 
     c[0] = 3;
     c[1] = 14;
-    return ( (a - b) == c );
+    return ((a - b) == c);
 }
 
 // Test 6: elementwise product of two vectors
@@ -112,7 +112,7 @@ bool test6()
 
     c[0] = 10;
     c[1] = 15;
-    return ( (a.elementwise(b) ) == c );
+    return ((a.elementwise(b)) == c);
 }
 
 // Test 7: vector contains element
@@ -123,7 +123,7 @@ bool test7()
     a[1] = 6;
     a[2] = 3;
 
-    if( a.is_in( 98 ) )
+    if (a.is_in(98))
         return false;
     return a.is_in(6);
 }
@@ -153,7 +153,7 @@ bool test9()
     a[1] = 15;
     b = a.deep_copy();
     b[1] = 999;
-    
+
     return (a[1] == 15) && (b[1] == 999);
 }
 
@@ -185,22 +185,22 @@ bool test12()
     a[0] = 15;
     a[1] = 2;
 
-    double v( a.get(1) );
-    double w( a[1] );
+    double v(a.get(1));
+    double w(a[1]);
     w = 1000;
-    return ( a[1] == 2 ) && ( v == 2 ) && ( w == 1000 );
+    return (a[1] == 2) && (v == 2) && (w == 1000);
 }
 
 // Test 13: sum
-double stat_test_f( double x ) { return x * x; }
+double stat_test_f(double x) { return x * x; }
 bool test13()
 {
     DoubleVec a(3);
     DoubleVec b(3);
-    for( int i(0); i < a.size(); ++i )
+    for (int i(0); i < a.size(); ++i)
     {
         a[i] = i + 1;
-        b[i] = stat_test_f( i + 1 );
+        b[i] = stat_test_f(i + 1);
     }
     return (a.sum() == 6);
 }
@@ -210,10 +210,10 @@ bool test14()
 {
     DoubleVec a(3);
     DoubleVec b(3);
-    for( int i(0); i < a.size(); ++i )
+    for (int i(0); i < a.size(); ++i)
     {
         a[i] = i + 1;
-        b[i] = stat_test_f( i + 1 );
+        b[i] = stat_test_f(i + 1);
     }
     return (a.mean() == 2);
 }
@@ -223,12 +223,12 @@ bool test15()
 {
     DoubleVec a(3);
     DoubleVec b(3);
-    for( int i(0); i < a.size(); ++i )
+    for (int i(0); i < a.size(); ++i)
     {
         a[i] = i + 1;
-        b[i] = stat_test_f( i + 1 );
+        b[i] = stat_test_f(i + 1);
     }
-    return (a.var() == 2./3.);
+    return (a.var() == 2. / 3.);
 }
 
 // Test 16: std
@@ -236,12 +236,12 @@ bool test16()
 {
     DoubleVec a(3);
     DoubleVec b(3);
-    for( int i(0); i < a.size(); ++i )
+    for (int i(0); i < a.size(); ++i)
     {
         a[i] = i + 1;
-        b[i] = stat_test_f( i + 1 );
+        b[i] = stat_test_f(i + 1);
     }
-    return ( a.stdev() == sqrt(2./3.) );
+    return (a.stdev() == sqrt(2. / 3.));
 }
 
 // Test 17: cov
@@ -249,12 +249,12 @@ bool test17()
 {
     DoubleVec a(3);
     DoubleVec b(3);
-    for( int i(0); i < a.size(); ++i )
+    for (int i(0); i < a.size(); ++i)
     {
         a[i] = i + 1;
-        b[i] = stat_test_f( i + 1 );
+        b[i] = stat_test_f(i + 1);
     }
-    return ( abs(a.cov(b) - 2.6666666666666) < 1e-8);
+    return (abs(a.cov(b) - 2.6666666666666) < 1e-8);
 }
 
 // Test 18: cor
@@ -262,12 +262,12 @@ bool test18()
 {
     DoubleVec a(3);
     DoubleVec b(3);
-    for( int i(0); i < a.size(); ++i )
+    for (int i(0); i < a.size(); ++i)
     {
         a[i] = i + 1;
-        b[i] = stat_test_f( i + 1 );
+        b[i] = stat_test_f(i + 1);
     }
-    return ( abs( a.cor(b) - 0.98974332 ) < 1e-8 );
+    return (abs(a.cor(b) - 0.98974332) < 1e-8);
 }
 
 // Test 19: zero matrix
@@ -393,14 +393,14 @@ bool test27()
     // set up matrix
     int n(2);
     Matrix A(n, n);
-    for( int r(0); r < n; ++r )
+    for (int r(0); r < n; ++r)
     {
-        for( int c(0); c < n; ++c )
+        for (int c(0); c < n; ++c)
         {
             A(r, c) = r * n + c + 1;
         }
     }
-    return util::close( A.determinant(), -2.);
+    return util::close(A.determinant(), -2.);
 }
 
 // Test 28: determinant test 2
@@ -408,7 +408,7 @@ bool test28()
 {
     Matrix A(4, 4);
     DoubleVec v(4);
-    for( int i(0); i < 4; ++i )
+    for (int i(0); i < 4; ++i)
     {
         v[i] = i + 1.;
     }
@@ -439,7 +439,7 @@ bool test30()
     test(0, 0) = 1;
     test(1, 1) = 1;
     test(0, 2) = 1;
-    test(1, 2) = 2./3.;
+    test(1, 2) = 2. / 3.;
 
     A[0][0] = 1;
     A[0][1] = 2;
@@ -485,23 +485,23 @@ bool test32()
 bool test33()
 {
     Matrix A(4, 4);
-    for( int i(0); i < 4; ++i )
+    for (int i(0); i < 4; ++i)
     {
-        for( int j(0); j < 4; ++j )
+        for (int j(0); j < 4; ++j)
         {
-            A(j, i) = pow( (i + 1), j );
+            A(j, i) = pow((i + 1), j);
         }
     }
     Matrix test(4, 4);
     test(0, 0) = 4;
-    test(0, 1) = -13./3.;
+    test(0, 1) = -13. / 3.;
     test(0, 2) = 1.5;
-    test(0, 3) = -1./6.;
+    test(0, 3) = -1. / 6.;
 
     test(1, 0) = -6;
     test(1, 1) = 9.5;
     test(1, 2) = -4;
-    test(1, 3) = 1./2.;
+    test(1, 3) = 1. / 2.;
 
     test(2, 0) = 4;
     test(2, 1) = -7;
@@ -509,10 +509,10 @@ bool test33()
     test(2, 3) = -0.5;
 
     test(3, 0) = -1;
-    test(3, 1) = 11./6.;
+    test(3, 1) = 11. / 6.;
     test(3, 2) = -1;
-    test(3, 3) = 1./6.;
-    return( inv(A) == test );
+    test(3, 3) = 1. / 6.;
+    return (inv(A) == test);
 }
 
 // test 34: simple equation solver
@@ -559,7 +559,7 @@ bool test36()
     std::vector<double> v(n);
     std::vector<double> w(n);
     v[0] = w[0] = 0;
-    for( int i(1); i < n; ++i)
+    for (int i(1); i < n; ++i)
     {
         v[i] = i;
         w[i] = w[i - 1] + i;
@@ -570,14 +570,13 @@ bool test36()
 }
 
 // parameterized_function
-DoubleVec option_payoff( DoubleVec x, DoubleVec k )
+DoubleVec option_payoff(DoubleVec x, DoubleVec k)
 {
-    std::vector<double> ret_vec( x.size() );
-    std::transform( x.begin(), x.end(), k.begin(),
-                    ret_vec.begin(), []( double x_, double k_)
-                    { return std::max(x_ - k_, 0.); } );
-    return DoubleVec( ret_vec );
-
+    std::vector<double> ret_vec(x.size());
+    std::transform(x.begin(), x.end(), k.begin(),
+                   ret_vec.begin(), [](double x_, double k_)
+                   { return std::max(x_ - k_, 0.); });
+    return DoubleVec(ret_vec);
 }
 
 // parameterized function test
@@ -600,10 +599,9 @@ bool test37()
     DoubleVec z_1 = pf(x);
     DoubleVec z_2 = pf(y);
 
-    if( z_1 != x_result )
+    if (z_1 != x_result)
         return false;
     return z_2 == y_result;
-    
 }
 
 // parameterized function test -- 1d
@@ -626,11 +624,9 @@ bool test38()
     double z_1 = pf.x_variable_W_constant_1d(x);
     double z_2 = pf.x_variable_W_constant_1d(y);
 
-
-    if( z_1 != x_result[0] )
+    if (z_1 != x_result[0])
         return false;
     return z_2 == y_result[0];
-    
 }
 
 // complex addition
@@ -654,11 +650,10 @@ bool test41()
 {
     Complex z(1, 1);
     double r = sqrt(2);
-    assert( z.magnitude() == r );
+    assert(z.magnitude() == r);
 
     Complex w = z + 1.;
     return w.re == 2.;
-
 }
 
 // inverting a complex number
@@ -675,64 +670,90 @@ bool test43()
     std::vector<unsigned int> v{4, 5, 2, 1, 0, 9};
     std::vector<unsigned int> res{2, 1, 3, 4, 5, 0};
     std::vector<unsigned int> calc = util::argsort(v);
-    for( int i(0); i < v.size(); ++i)
+    for (int i(0); i < v.size(); ++i)
     {
-        cout << calc[i] << ' ' << res[i] << endl;
-        //assert( calc[i] == res[i] );
+        // assert( calc[i] == res[i] );
     }
     return true;
+}
 
+// kmeans stuff
+bool test44()
+{
+    int n_means = 3;
+    int n_iterations_per_round = 10;
+    int n_rounds = 10;
+    KMeans model(n_means = n_means, n_rounds = n_rounds, n_iterations_per_round = n_iterations_per_round);
+
+    int n_obs = 100;
+    int n_dim = 2;
+    Matrix X(n_obs, n_dim);
+    for (int r(0); r < n_obs; ++r)
+    {
+        for (int c(0); c < n_dim; ++c)
+        {
+            double r_mean = r % 3;
+            double c_mean = r_mean;
+            X(r, c) = r_mean + 0.3 * util::crude_normal_rv();
+        }
+    }
+    model.fit(X);
+    DoubleVec v = model.predict(X);
+    v.print();
+    return false;
 }
 
 int main()
 {
-    cout << endl << endl;
+    cout << endl
+         << endl;
     cout << "TESTS PASSED:";
-    cout << endl << boolalpha;
-    cout << " Test   1 results:   " << test1()   << endl;
-    cout << " Test   2 results:   " << test2()   << endl;
-    cout << " Test   3 results:   " << test3()   << endl;
-    cout << " Test   4 results:   " << test4()   << endl;
-    cout << " Test   5 results:   " << test5()   << endl;
-    cout << " Test   6 results:   " << test6()   << endl;
-    cout << " Test   7 results:   " << test7()   << endl;
-    cout << " Test   8 results:   " << test8()   << endl;
-    cout << " Test   9 results:   " << test9()   << endl;
-    cout << " Test  10 results:   " << test10()  << endl;
-    cout << " Test  11 results:   " << test11()  << endl;
-    cout << " Test  12 results:   " << test12()  << endl;
-    cout << " Test  13 results:   " << test13()  << endl;
-    cout << " Test  14 results:   " << test14()  << endl;
-    cout << " Test  15 results:   " << test15()  << endl;
-    cout << " Test  16 results:   " << test16()  << endl;
-    cout << " Test  17 results:   " << test17()  << endl;
-    cout << " Test  18 results:   " << test18()  << endl;
-    cout << " Test  19 results:   " << test19()  << endl;
-    cout << " Test  20 results:   " << test20()  << endl;
-    cout << " Test  21 results:   " << test21()  << endl;
-    cout << " Test  22 results:   " << test22()  << endl;
-    cout << " Test  23 results:   " << test23()  << endl;
-    cout << " Test  24 results:   " << test24()  << endl;
-    cout << " Test  25 results:   " << test25()  << endl;
-    cout << " Test  26 results:   " << test26()  << endl;
-    cout << " Test  27 results:   " << test27()  << endl;
-    cout << " Test  28 results:   " << test28()  << endl;
-    cout << " Test  29 results:   " << test29()  << endl;
-    cout << " Test  30 results:   " << test30()  << endl;
-    cout << " Test  31 results:   " << test31()  << endl;
-    cout << " Test  32 results:   " << test32()  << endl;
-    cout << " Test  33 results:   " << test33()  << endl;
-    cout << " Test  34 results:   " << test34()  << endl;
-    cout << " Test  35 results:   " << test35()  << endl;
-    cout << " Test  36 results:   " << test36()  << endl;
-    cout << " Test  37 results:   " << test37()  << endl;
-    cout << " Test  38 results:   " << test38()  << endl;
-    cout << " Test  39 results    " << test39()  << endl;
-    cout << " Test  40 results    " << test40()  << endl;
-    cout << " Test  41 results    " << test41()  << endl;
-    cout << " Test  42 results    " << test42()  << endl;
-    cout << " Test  43 results    " << test43()  << endl;
+    cout << endl
+         << boolalpha;
+    cout << " Test   1 results:   " << test1() << endl;
+    cout << " Test   2 results:   " << test2() << endl;
+    cout << " Test   3 results:   " << test3() << endl;
+    cout << " Test   4 results:   " << test4() << endl;
+    cout << " Test   5 results:   " << test5() << endl;
+    cout << " Test   6 results:   " << test6() << endl;
+    cout << " Test   7 results:   " << test7() << endl;
+    cout << " Test   8 results:   " << test8() << endl;
+    cout << " Test   9 results:   " << test9() << endl;
+    cout << " Test  10 results:   " << test10() << endl;
+    cout << " Test  11 results:   " << test11() << endl;
+    cout << " Test  12 results:   " << test12() << endl;
+    cout << " Test  13 results:   " << test13() << endl;
+    cout << " Test  14 results:   " << test14() << endl;
+    cout << " Test  15 results:   " << test15() << endl;
+    cout << " Test  16 results:   " << test16() << endl;
+    cout << " Test  17 results:   " << test17() << endl;
+    cout << " Test  18 results:   " << test18() << endl;
+    cout << " Test  19 results:   " << test19() << endl;
+    cout << " Test  20 results:   " << test20() << endl;
+    cout << " Test  21 results:   " << test21() << endl;
+    cout << " Test  22 results:   " << test22() << endl;
+    cout << " Test  23 results:   " << test23() << endl;
+    cout << " Test  24 results:   " << test24() << endl;
+    cout << " Test  25 results:   " << test25() << endl;
+    cout << " Test  26 results:   " << test26() << endl;
+    cout << " Test  27 results:   " << test27() << endl;
+    cout << " Test  28 results:   " << test28() << endl;
+    cout << " Test  29 results:   " << test29() << endl;
+    cout << " Test  30 results:   " << test30() << endl;
+    cout << " Test  31 results:   " << test31() << endl;
+    cout << " Test  32 results:   " << test32() << endl;
+    cout << " Test  33 results:   " << test33() << endl;
+    cout << " Test  34 results:   " << test34() << endl;
+    cout << " Test  35 results:   " << test35() << endl;
+    cout << " Test  36 results:   " << test36() << endl;
+    cout << " Test  37 results:   " << test37() << endl;
+    cout << " Test  38 results:   " << test38() << endl;
+    cout << " Test  39 results    " << test39() << endl;
+    cout << " Test  40 results    " << test40() << endl;
+    cout << " Test  41 results    " << test41() << endl;
+    cout << " Test  42 results    " << test42() << endl;
+    cout << " Test  43 results    " << test43() << endl;
+    cout << " Test  44 results    " << test44() << endl;
 
     cout << endl;
-
 }

@@ -23,7 +23,7 @@ public:
     /*
         Initialize as x + 0i
     */
-    Complex(double x); // re = x, im = 0
+    Complex(double p_x); // re = x, im = 0
 
     /*
         Complex addition
