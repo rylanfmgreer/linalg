@@ -30,7 +30,17 @@ void Matrix::append_col(DoubleVec v)
 
 void Matrix::append_row(DoubleVec v)
 {
-    // TODO: add in special cases for empty matrix
+    // account for the case of an empty matrix
+    if( this->nrow() == 0 )
+    {
+        int n_rows_to_use = v.size();
+        for( int i(0); i < n_rows_to_use; ++i)
+        {
+            DoubleVec empty_doublevec;
+            columns.push_back(empty_doublevec);
+        }
+
+    }
     for (int i(0); i < columns.size(); ++i)
     {
         columns[i].push_back(v[i]);
@@ -214,4 +224,12 @@ bool Matrix::is_symmetric() const
     }
     
     return true;
+}
+
+DoubleVec Matrix::mean_by_col() const
+{
+    std::vector<double> column_means(this->ncol());
+    for( int i(0); i < this->ncol(); ++i)
+        column_means[i] = this->col(i).mean();
+    return DoubleVec(column_means);
 }

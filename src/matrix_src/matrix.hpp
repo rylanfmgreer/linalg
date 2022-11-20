@@ -238,6 +238,12 @@ public:
     */
     bool is_symmetric() const;
 
+    /*
+        Calculate the mean of each column
+        and return them as a doublevec.
+    */
+    DoubleVec mean_by_col() const;
+
 private:
     /*
         The columns of the matrix.

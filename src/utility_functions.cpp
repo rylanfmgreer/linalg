@@ -52,6 +52,9 @@ namespace util
         return idx;
     }
 
-
+    int rand_with_max_n(int n)
+    {
+        return std::rand() % n;
+    }
 
 } // of namespace
