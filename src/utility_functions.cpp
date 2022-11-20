@@ -1,6 +1,8 @@
 #include "utility_functions.hpp"
 #include <vector>
 #include <cmath>
+#include <limits>
+#include <random>
 
 using namespace std;
 
@@ -55,6 +57,23 @@ namespace util
     int rand_with_max_n(int n)
     {
         return std::rand() % n;
+    }
+
+    double crude_uniform_rv()
+    {
+        int lim = 100000;
+        int val = std::rand() % lim;
+        return (1.0 * val) / (1.0 * lim);
+    }
+
+    double crude_normal_rv()
+    {
+        double s = 0.;
+        for( int i(0); i < 12; ++i)
+        {
+            s += crude_uniform_rv();
+        }
+        return s/12.;
     }
 
 } // of namespace

@@ -677,11 +677,37 @@ bool test43()
     std::vector<unsigned int> calc = util::argsort(v);
     for( int i(0); i < v.size(); ++i)
     {
-        cout << calc[i] << ' ' << res[i] << endl;
         //assert( calc[i] == res[i] );
     }
     return true;
 
+}
+
+// kmeans stuff
+bool test44()
+{
+    int n_means = 3;
+    int n_iterations_per_round = 10;
+    int n_rounds = 10;
+    KMeans model(n_means=n_means, n_rounds=n_rounds, n_iterations_per_round=n_iterations_per_round);
+
+    int n_obs = 10;
+    int n_dim = 2;
+    Matrix X(n_obs, n_dim);
+    for( int r(0); r < n_obs; ++r)
+    {
+        for( int c(0); c < n_dim; ++c )
+        {
+            double r_mean = r % 3;
+            double c_mean = r_mean;
+            X(r, c) = r_mean + 0.1 * util::crude_normal_rv();
+        }
+    }
+    model.fit(X);
+    DoubleVec v = model.predict(X);
+    v.print();
+    return false;
+    
 }
 
 int main()
@@ -732,6 +758,7 @@ int main()
     cout << " Test  41 results    " << test41()  << endl;
     cout << " Test  42 results    " << test42()  << endl;
     cout << " Test  43 results    " << test43()  << endl;
+    cout << " Test  44 results    " << test44()  << endl;
 
     cout << endl;
 
