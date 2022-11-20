@@ -35,7 +35,6 @@ void Matrix::append_row(DoubleVec v)
     // account for the case of an empty matrix
     if( this->nrow() == 0 )
     {
-        cout << " Oh we have done thsi now yes " << endl;
         int n_rows_to_use = v.size();
         for( int i(0); i < n_rows_to_use; ++i)
         {
@@ -235,4 +234,23 @@ DoubleVec Matrix::mean_by_col() const
     for( int i(0); i < this->ncol(); ++i)
         column_means[i] = this->col(i).mean();
     return DoubleVec(column_means);
+}
+
+DoubleVec Matrix::function_by_col(std::function<double (DoubleVec)> f) const
+{
+    std::vector<double> values(this->ncol());
+    DoubleVec col_to_apply_to;
+    for( int i(0); i < this->ncol(); ++i )
+    {
+        col_to_apply_to = this->col(i);
+        values[i] = f(col_to_apply_to);
+    }
+    DoubleVec dv(values);
+    return dv;
+}
+
+DoubleVec Matrix::function_by_row(std::function<double (DoubleVec)> f) const
+{
+    Matrix AT = this->transpose();
+    return AT.function_by_col(f);
 }

@@ -691,7 +691,7 @@ bool test44()
     int n_rounds = 10;
     KMeans model(n_means=n_means, n_rounds=n_rounds, n_iterations_per_round=n_iterations_per_round);
 
-    int n_obs = 10;
+    int n_obs = 100;
     int n_dim = 2;
     Matrix X(n_obs, n_dim);
     for( int r(0); r < n_obs; ++r)

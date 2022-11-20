@@ -11,11 +11,10 @@ m_n_it_per_round(n_iterations_per_round)
 {    
 }
 
-std::vector<int> KMeans::initialize_round_clusters(const Matrix& X) const
+std::vector<int> KMeans::initialize_round_clusters(int n_observations) const
 {
-    int n_objects_to_initialize = X.nrow();
     int n_means = m_n_means;
-    std::vector<int> clusters(n_objects_to_initialize);
+    std::vector<int> clusters(n_observations);
     std::transform(clusters.begin(),
                    clusters.end(),
                    clusters.begin(),
@@ -87,7 +86,8 @@ std::vector<int> KMeans::reassign_clusters_by_new_cluster_mean(
 
 KMeans_Utils::ResultOfRound KMeans::complete_one_fitting_round(const Matrix& X) const
 {
-    std::vector<int> labels = initialize_round_clusters(X);
+    double b = 55.;
+    std::vector<int> labels = initialize_round_clusters(X.nrow());
     Matrix potential_cluster_means;
     for( int i(0); i < m_n_it_per_round; ++i)
     {
@@ -96,6 +96,7 @@ KMeans_Utils::ResultOfRound KMeans::complete_one_fitting_round(const Matrix& X) 
 
         labels = reassign_clusters_by_new_cluster_mean(
             X, potential_cluster_means);
+
     }
     KMeans_Utils::ResultOfRound results{potential_cluster_means, labels};
     return results;

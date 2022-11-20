@@ -38,8 +38,7 @@ class KMeans: public UnsupervisedLearning
             const std::vector<int> cluster_labels) const;
 
     // lower level within-round functions
-    std::vector<int> initialize_round_clusters(
-        const Matrix& X) const;
+    std::vector<int> initialize_round_clusters(int n_observations) const;
 
     Matrix calculate_means_by_cluster(const Matrix& X,
                 std::vector<int> cluster_labels) const;
