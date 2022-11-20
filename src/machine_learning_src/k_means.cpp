@@ -1,7 +1,7 @@
 // author: rgreer
 #include <float.h>
 #include "k_means.hpp"
-#include "../utility_functions.hpp"
+#include "../utilities_src/utility_functions.hpp"
 #include "../doublevec_src/functions_on_doublevecs.hpp"
 
 using namespace std; // TODO: remove

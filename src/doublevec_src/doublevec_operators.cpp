@@ -1,5 +1,5 @@
 #include "doublevec.hpp"
-#include "../utility_functions.hpp"
+#include "../utilities_src/utility_functions.hpp"
 
 using namespace std;
 using namespace util;
