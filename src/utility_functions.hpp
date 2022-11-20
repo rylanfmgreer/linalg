@@ -34,6 +34,7 @@ namespace util
 
     std::vector<unsigned int> argsort( const std::vector<unsigned int>& v);
 
+    int rand_with_max_n(int n);
 }
 
 #endif
