@@ -1,3 +1,6 @@
+#ifndef k_means_hpp_____
+#define k_means_hpp_____
+
 #include "machine_learning.hpp"
 
 namespace KMeans_Utils
@@ -42,3 +45,4 @@ class KMeans: public UnsupervisedLearning
 }; // end of class
 
 
+#endif
