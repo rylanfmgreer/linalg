@@ -3,6 +3,8 @@
 #include "k_means.hpp"
 #include "../utility_functions.hpp"
 
+using namespace std; // TODO: remove
+
 KMeans::KMeans(int n_means, int n_rounds, int n_iterations_per_round)
 :m_n_means(n_means), m_n_rounds(n_rounds),
 m_n_it_per_round(n_iterations_per_round)
@@ -59,7 +61,10 @@ int KMeans::find_closest_mean_to_observation(
         cluster_to_check = cluster_means.col(i);
         distance_to_check = (cluster_to_check - observation).sq_norm();
         if( distance_to_check < minimum_distance)
+        {
             closest_cluster = i;
+            minimum_distance = distance_to_check;
+        }
     }
     return closest_cluster;
 
@@ -75,7 +80,7 @@ std::vector<int> KMeans::reassign_clusters_by_new_cluster_mean(
     {
         observation_to_check = X.row(i);
         new_clusters[i] = find_closest_mean_to_observation(
-            observation_to_check, X);
+            observation_to_check, cluster_means);
     }
     return new_clusters;
 }
@@ -84,10 +89,11 @@ KMeans_Utils::ResultOfRound KMeans::complete_one_fitting_round(const Matrix& X) 
 {
     std::vector<int> labels = initialize_round_clusters(X);
     Matrix potential_cluster_means;
-
     for( int i(0); i < m_n_it_per_round; ++i)
     {
+
         potential_cluster_means = calculate_means_by_cluster(X, labels);
+
         labels = reassign_clusters_by_new_cluster_mean(
             X, potential_cluster_means);
     }
@@ -100,8 +106,8 @@ double KMeans::score_from_one_fitting_round(const Matrix& X,
             const std::vector<int> cluster_labels) const
 {
     double score(0);
-    DoubleVec associated_mean;
-    DoubleVec observation;
+    DoubleVec associated_mean(0);
+    DoubleVec observation(0);
     int label;
     for( int i(0); i < cluster_labels.size(); ++i)
     {
@@ -125,8 +131,12 @@ void KMeans::fit(const Matrix& X)
         score_to_check = score_from_one_fitting_round(X,
             result_from_round.cluster_means,
             result_from_round.cluster_labels);
+
         if(score_to_check < lowest_score)
+        {
             m_fitted_cluster_means = result_from_round.cluster_means;
+            lowest_score = score_to_check;
+        }
     }
 }
 
