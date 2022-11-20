@@ -4,7 +4,7 @@ namespace f_dv
 {
     double mean(const DoubleVec& v)
     {
-        return v.mean()
+        return v.mean();
     }
 
     double max(const DoubleVec& v)
