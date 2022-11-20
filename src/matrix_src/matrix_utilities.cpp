@@ -13,7 +13,7 @@ namespace utils
 
 int Matrix::nrow() const
 {
-    if(columns.size() == 0)
+    if (columns.size() == 0)
         return 0;
     return columns[0].size();
 }
@@ -33,15 +33,14 @@ void Matrix::append_col(DoubleVec v)
 void Matrix::append_row(DoubleVec v)
 {
     // account for the case of an empty matrix
-    if( this->nrow() == 0 )
+    if (this->nrow() == 0)
     {
         int n_rows_to_use = v.size();
-        for( int i(0); i < n_rows_to_use; ++i)
+        for (int i(0); i < n_rows_to_use; ++i)
         {
             DoubleVec empty_doublevec;
             columns.push_back(empty_doublevec);
         }
-
     }
     for (int i(0); i < columns.size(); ++i)
     {
@@ -213,34 +212,34 @@ Matrix Matrix::invert() const
 
 bool Matrix::is_symmetric() const
 {
-    if( !this->is_square() )
+    if (!this->is_square())
         return false;
 
-    for(int r(1); r < this->nrow(); ++r)
+    for (int r(1); r < this->nrow(); ++r)
     {
-        for( int c(0); c < r; ++c)
+        for (int c(0); c < r; ++c)
         {
-            if( this->get(r, c) != this->get(c, r) )
+            if (this->get(r, c) != this->get(c, r))
                 return false;
         }
     }
-    
+
     return true;
 }
 
 DoubleVec Matrix::mean_by_col() const
 {
     std::vector<double> column_means(this->ncol());
-    for( int i(0); i < this->ncol(); ++i)
+    for (int i(0); i < this->ncol(); ++i)
         column_means[i] = this->col(i).mean();
     return DoubleVec(column_means);
 }
 
-DoubleVec Matrix::function_by_col(std::function<double (DoubleVec)> f) const
+DoubleVec Matrix::function_by_col(std::function<double(DoubleVec)> f) const
 {
     std::vector<double> values(this->ncol());
     DoubleVec col_to_apply_to;
-    for( int i(0); i < this->ncol(); ++i )
+    for (int i(0); i < this->ncol(); ++i)
     {
         col_to_apply_to = this->col(i);
         values[i] = f(col_to_apply_to);
@@ -249,7 +248,7 @@ DoubleVec Matrix::function_by_col(std::function<double (DoubleVec)> f) const
     return dv;
 }
 
-DoubleVec Matrix::function_by_row(std::function<double (DoubleVec)> f) const
+DoubleVec Matrix::function_by_row(std::function<double(DoubleVec)> f) const
 {
     Matrix AT = this->transpose();
     return AT.function_by_col(f);

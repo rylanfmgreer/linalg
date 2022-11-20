@@ -23,12 +23,12 @@ namespace util
         return false;
     }
 
-    bool double_in_vector(const double x, const vector<double> &v,\
+    bool double_in_vector(const double x, const vector<double> &v,
                           const double epsilon)
     {
-        for( int i(0); i < v.size(); ++i )
+        for (int i(0); i < v.size(); ++i)
         {
-            if( close(v[i], x, epsilon) )
+            if (close(v[i], x, epsilon))
                 return true;
         }
         return false;
@@ -36,21 +36,21 @@ namespace util
 
     int int_pos_in_vector(const int n, const std::vector<unsigned int> &v)
     {
-       for (int i(0); i < v.size(); ++i)
-       {
-           if(v[i] == n)
-            return i;
-       }
-       return -1;
+        for (int i(0); i < v.size(); ++i)
+        {
+            if (v[i] == n)
+                return i;
+        }
+        return -1;
     }
 
-
-    std::vector<unsigned int> argsort(const std::vector<unsigned int>& v)
+    std::vector<unsigned int> argsort(const std::vector<unsigned int> &v)
     {
-        vector< unsigned int > idx(v.size());
+        vector<unsigned int> idx(v.size());
         std::iota(idx.begin(), idx.end(), 0);
         stable_sort(idx.begin(), idx.end(),
-            [&v](unsigned int i1, unsigned int i2) {return v[i1] < v[i2];});
+                    [&v](unsigned int i1, unsigned int i2)
+                    { return v[i1] < v[i2]; });
         return idx;
     }
 
@@ -69,11 +69,11 @@ namespace util
     double crude_normal_rv()
     {
         double s = 0.;
-        for( int i(0); i < 12; ++i)
+        for (int i(0); i < 12; ++i)
         {
             s += crude_uniform_rv();
         }
-        return s/12.;
+        return (s - 6.);
     }
 
 } // of namespace

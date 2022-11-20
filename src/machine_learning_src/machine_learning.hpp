@@ -10,19 +10,16 @@
 
 class SupervisedLearning
 {
-    public:
-    virtual void fit(const Matrix& X, const DoubleVec& y) = 0;
-    virtual DoubleVec predict(const Matrix& X) const = 0;
-
+public:
+    virtual void fit(const Matrix &X, const DoubleVec &y) = 0;
+    virtual DoubleVec predict(const Matrix &X) const = 0;
 };
 
 class UnsupervisedLearning
 {
-    public:
-    virtual void fit(const Matrix& X) = 0;
-    virtual DoubleVec predict(const Matrix& X) const = 0;
-
+public:
+    virtual void fit(const Matrix &X) = 0;
+    virtual DoubleVec predict(const Matrix &X) const = 0;
 };
-
 
 #endif

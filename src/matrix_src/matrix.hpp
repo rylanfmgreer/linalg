@@ -249,12 +249,10 @@ public:
     */
     DoubleVec function_by_col(std::function<double(DoubleVec)> f) const;
 
-
     /*
         Apply a function by rows.
     */
     DoubleVec function_by_row(std::function<double(DoubleVec)> f) const;
-
 
 private:
     /*
