@@ -13,6 +13,8 @@ namespace utils
 
 int Matrix::nrow() const
 {
+    if(columns.size() == 0)
+        return 0;
     return columns[0].size();
 }
 
@@ -33,6 +35,7 @@ void Matrix::append_row(DoubleVec v)
     // account for the case of an empty matrix
     if( this->nrow() == 0 )
     {
+        cout << " Oh we have done thsi now yes " << endl;
         int n_rows_to_use = v.size();
         for( int i(0); i < n_rows_to_use; ++i)
         {
