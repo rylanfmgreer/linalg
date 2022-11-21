@@ -67,7 +67,7 @@ DoubleVec::DoubleVec(double start, double end, double step)
 
 using namespace std;
 
-DoubleVec::DoubleVec(string filename, int column_number, int start_row)
+DoubleVec::DoubleVec(const std::string filename, int column_number, int start_row)
 {
     fstream csv;
     string line;

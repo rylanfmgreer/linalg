@@ -1,5 +1,7 @@
 #include <cmath>
+#include <float.h>
 #include "doublevec.hpp"
+#include <algorithm>
 
 using namespace std;
 
@@ -113,4 +115,9 @@ double DoubleVec::sq_norm() const
 double DoubleVec::norm() const
 {
     return sqrt( this->sq_norm() );
+}
+
+double DoubleVec::dot(const DoubleVec& v) const
+{
+    return *this * v;
 }

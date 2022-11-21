@@ -36,6 +36,18 @@ public:
     */
     Matrix(int nr, int nc);
 
+
+    /*
+        Initialize a matrix as a copy of A.
+    */
+    Matrix(const Matrix& A);
+
+    /*
+        Read a matrix in from a filename
+    */
+    Matrix(const std::string csv_filename, int start_row=0,
+           bool ignore_first_column=false, bool ignore_first_row=false);
+
     /*
         Pull the nth column. Allows modification (pulls reference.)
     */

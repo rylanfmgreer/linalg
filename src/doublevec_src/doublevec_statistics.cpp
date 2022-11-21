@@ -1,7 +1,7 @@
 #include "doublevec.hpp"
 #include <cmath>
 #include <numeric>
-
+#include <float.h>
 using namespace std;
 
 /*
@@ -110,4 +110,17 @@ DoubleVec DoubleVec::cumsum() const
 DoubleVec cumsum(const DoubleVec &v)
 {
     return v.cumsum();
+}
+
+double DoubleVec::max() const
+{
+    double mx = -1.0 * DBL_MAX;
+    std::for_each(data.begin(), data.end(),
+                      [&mx](double x)
+                      {
+                          if (x > mx)
+                              mx = x;
+                      });
+    return mx;
+
 }

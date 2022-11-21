@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include "matrix.hpp"
+#include "../doublevec_src/functions_on_doublevecs.hpp"
 using namespace std;
 
 namespace utils
@@ -68,7 +69,7 @@ DoubleVec Matrix::row(int n) const
     {
         v[i] = this->get(n, i);
     }
-    return v.deep_copy();
+    return v;
 }
 
 DoubleVec Matrix::col(int n) const
@@ -229,10 +230,7 @@ bool Matrix::is_symmetric() const
 
 DoubleVec Matrix::mean_by_col() const
 {
-    std::vector<double> column_means(this->ncol());
-    for (int i(0); i < this->ncol(); ++i)
-        column_means[i] = this->col(i).mean();
-    return DoubleVec(column_means);
+    return this->function_by_col(f_dv::mean);
 }
 
 DoubleVec Matrix::function_by_col(std::function<double(DoubleVec)> f) const
