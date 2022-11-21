@@ -6,7 +6,7 @@
 
 #include "machine_learning.hpp"
 
-class LinearRegression: public SupervisedLearning
+class LinearRegression: public SupervisedRegression
 {
     public:
     virtual void fit(const Matrix& X, const DoubleVec& y);

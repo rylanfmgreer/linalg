@@ -8,18 +8,37 @@
 #include "../doublevec_src/doublevec.hpp"
 #include "../matrix_src/matrix.hpp"
 
-class SupervisedLearning
+
+class SupervisedRegression
 {
 public:
     virtual void fit(const Matrix &X, const DoubleVec &y) = 0;
     virtual DoubleVec predict(const Matrix &X) const = 0;
 };
 
-class UnsupervisedLearning
+
+class SupervisedClassification
+{
+public:
+    virtual void fit(const Matrix &X, const std::vector<int> &y) = 0;
+    virtual std::vector<int> predict(const Matrix &X) const = 0;
+};
+
+
+class UnsupervisedRegression
 {
 public:
     virtual void fit(const Matrix &X) = 0;
     virtual DoubleVec predict(const Matrix &X) const = 0;
 };
+
+
+class UnsupervisedClassification
+{
+public:
+    virtual void fit(const Matrix &X) = 0;
+    virtual std::vector<int> predict(const Matrix &X) const = 0;
+};
+
 
 #endif

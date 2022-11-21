@@ -42,12 +42,12 @@ public:
         Begin at start, end at end, elements are spaced by step.
         The vector will have  [(end - start) // step + 1] elements.
     */
-    DoubleVec(double start, double end, double step); // think worse version of np.arange!
+    DoubleVec(double start, double end, double step); // think worse version of np.arange! 
 
     /*
         Hacked together solution to read a single vector from a csv.
     */
-    DoubleVec(std::string filename, int column_number, int start_row);
+    DoubleVec(const std::string filename, int column_number, int start_row);
 
     /*
         Add two vectors (elementwise addition)
@@ -165,12 +165,19 @@ public:
         Return the number of times v appears in the vector
     */
     int count(double v, double eps = 1e-8) const;
+    
+    /*
+        Return the dot product of this and v
+    */
+    double dot(const DoubleVec& v) const;
 
     // Basic statistical functions.
     double sum() const;
     double mean() const;
     double var() const;
     double stdev() const;
+    double max() const;
+    double min() const;
     double cov(const DoubleVec &v) const;
     double cor(const DoubleVec &v) const;
 

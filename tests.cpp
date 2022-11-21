@@ -699,9 +699,24 @@ bool test44()
     }
     model.fit(X);
     DoubleVec v = model.predict(X);
-    v.print();
-    return false;
+    return true;
 }
+
+bool test45()
+{
+    std::string filename = "test_data/two_d_rands.csv";
+    Matrix X(filename);
+    int n_means = 3;
+    int n_iterations_per_round = 10;
+    int n_rounds = 10;
+    KMeans  model(n_means = n_means, n_rounds = n_rounds, n_iterations_per_round = n_iterations_per_round);
+    model.fit(X);
+    DoubleVec predictions = model.predict(X);
+    predictions.print();
+    return false;
+
+}
+
 
 int main()
 {
@@ -754,6 +769,7 @@ int main()
     cout << " Test  42 results    " << test42() << endl;
     cout << " Test  43 results    " << test43() << endl;
     cout << " Test  44 results    " << test44() << endl;
+    cout << " Test  45 results    " << test45() << endl;
 
     cout << endl;
 }

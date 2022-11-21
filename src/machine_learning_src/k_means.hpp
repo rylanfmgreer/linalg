@@ -15,7 +15,8 @@ namespace KMeans_Utils
 
 }; // end of namespace
 
-class KMeans : public UnsupervisedLearning
+// TODO: reimplement as classification.
+class KMeans : public UnsupervisedRegression
 {
 public:
     KMeans(int n_means, int n_rounds, int n_iterations_per_round);

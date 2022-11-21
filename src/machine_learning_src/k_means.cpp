@@ -50,7 +50,7 @@ Matrix KMeans::initialize_random_means_from_data(const Matrix &X) const
         obs_already_chosen = true;
         while (obs_already_chosen)
         {
-            obs_to_add_idx = util::rand_with_max_n(n_obs);
+            obs_to_add_idx = util::rand_from_0_to_n_exclusive_of_n(n_obs);
             obs_already_chosen = util::int_in_vector(obs_to_add_idx, chosen_data);
         }
         obs_to_add = X.row(obs_to_add_idx);
@@ -67,7 +67,7 @@ std::vector<int> KMeans::initialize_round_clusters(int n_observations) const
                    clusters.end(),
                    clusters.begin(),
                    [n_means](int x)
-                   { return util::rand_with_max_n(n_means); });
+                   { return util::rand_from_0_to_n_exclusive_of_n(n_means); });
     return clusters;
 }
 
