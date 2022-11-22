@@ -2,10 +2,14 @@
 #include "../utilities_src/utility_functions.hpp"
 
 // for convenience, typedef the longer names.
-typedef std::function< DoubleVec(DoubleVec) > frnrn;
 
-WeightedAvgRegression::WeightedAvgRegression(frnrn p_dist_to_weight)
-: m_distance_to_weight(p_dist_to_weight){}
+WeightedAvgRegression::WeightedAvgRegression(
+    WeightFunc::two_vec_func p_dist_to_weight)
+: m_distance_to_weight(p_dist_to_weight)
+{
+    DoubleVec params(1); // dummy initialization
+    m_params = params;
+}
 
 void WeightedAvgRegression::fit(const Matrix& X, const DoubleVec& y)
 {
@@ -23,7 +27,7 @@ DoubleVec WeightedAvgRegression::predict(const Matrix& X_test) const
     for( int i(0); i < n_observations; ++i )
     {
         distances = calculate_all_distances(observation);
-        weights = m_distance_to_weight(distances);
+        weights = m_distance_to_weight(distances, m_params);
         predictions[i] = weights * distances;
     }
     return predictions;
@@ -71,4 +75,11 @@ namespace WeightFunc
         DoubleVec new_dv(new_data);
         return new_dv;
     }
+
+    DoubleVec equal_weights(DoubleVec distances, DoubleVec unused_arg)
+    {
+        DoubleVec ones( distances.size(), 1.);
+        return ones;
+    }
+
 }

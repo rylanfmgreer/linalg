@@ -1,4 +1,5 @@
 // author: rgreer
+#pragma once
 #ifndef k_means_hpp_____
 #define k_means_hpp_____
 

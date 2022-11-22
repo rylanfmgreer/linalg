@@ -1,5 +1,6 @@
 // author: rgreer
 
+#pragma once
 #ifndef complex_numbers_12903u1290
 #define complex_numbers_12903u1290
 

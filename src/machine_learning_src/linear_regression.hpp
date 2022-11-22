@@ -1,6 +1,7 @@
 // author: rgreer
 // nov 19 2022
 
+#pragma once
 #ifndef linear_regression_implementation__
 #define linear_regression_implementation__
 

@@ -717,6 +717,22 @@ bool test45()
 
 }
 
+bool test46()
+{
+    std::string filename = "test_data/two_d_rands.csv";
+    Matrix X(filename);
+    DoubleVec y(X.nrow());
+    y[0] = 0.; // just in case...
+    std::transform(y.data.begin(), y.data.end() - 1,
+                   y.data.begin() + 1, [](double x){ return x + 1.; });
+
+    WeightedAvgRegression war(WeightFunc::equal_weights);
+    war.fit(X, y);
+    DoubleVec yhat = war.predict(y);
+    return false;
+
+}
+
 
 int main()
 {
@@ -770,6 +786,7 @@ int main()
     cout << " Test  43 results    " << test43() << endl;
     cout << " Test  44 results    " << test44() << endl;
     cout << " Test  45 results    " << test45() << endl;
+    cout << " Test  46 results    " << test46() << endl;
 
     cout << endl;
 }

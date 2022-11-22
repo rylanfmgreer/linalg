@@ -1,3 +1,4 @@
+#pragma once
 #ifndef doublevec_hpp___1234567654321
 #define doublevec_hpp___1234567654321
 

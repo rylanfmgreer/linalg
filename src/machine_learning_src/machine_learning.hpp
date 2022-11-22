@@ -2,6 +2,7 @@
 // author: rgreer
 // pure abstract class for machine learning
 
+#pragma once
 #ifndef machine_learning_header_just_abstract_xx
 #define machine_learning_header_just_abstract_xx
 
