@@ -26,7 +26,7 @@ DoubleVec WeightedAvgRegression::predict(const Matrix& X_test) const
     for( int i(0); i < n_observations; ++i )
     {
         DoubleVec observation = X_test.row(i);
-        DoubleVec obs_distance = calculate_all_distances(obs_distance);
+        DoubleVec obs_distance = calculate_all_distances(observation);
         DoubleVec weights = m_distance_to_weight(obs_distance, m_params);
         predictions[i] = weights * obs_distance;
     }
