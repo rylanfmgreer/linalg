@@ -7,6 +7,7 @@ namespace WeightFunc
 {
     typedef std::function<DoubleVec(DoubleVec, DoubleVec)> two_vec_func;
     DoubleVec k_nearest_neighbours(DoubleVec distances, DoubleVec k);
+    DoubleVec exponential_weighting(DoubleVec distances, DoubleVec w);
 };
 
 class WeightedAvgRegression: public SupervisedRegression

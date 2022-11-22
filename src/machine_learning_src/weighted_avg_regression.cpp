@@ -57,4 +57,18 @@ namespace WeightFunc
         DoubleVec ret_dv(new_data);
         return ret_dv;
     }
+
+    DoubleVec exponential_weighting(DoubleVec distances, DoubleVec w)
+    {
+        assert( w.size() == 1 );
+        std::vector<double> new_data(distances.size());
+        double d_w = w[0];
+        std::transform(distances.data.begin(), distances.data.end(),
+                       new_data.begin(), [d_w]( double x )
+                       {
+                        return exp( -d_w * x * x );
+                       });
+        DoubleVec new_dv(new_data);
+        return new_dv;
+    }
 }
