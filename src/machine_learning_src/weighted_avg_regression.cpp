@@ -19,16 +19,16 @@ void WeightedAvgRegression::fit(const Matrix& X, const DoubleVec& y)
 
 DoubleVec WeightedAvgRegression::predict(const Matrix& X_test) const
 {
+    // todo: rewrite everything to be more efficient
     int n_observations = X_test.nrow();
     DoubleVec predictions(n_observations);
-    DoubleVec observation;
-    DoubleVec distances;
-    DoubleVec weights;
+
     for( int i(0); i < n_observations; ++i )
     {
-        distances = calculate_all_distances(observation);
-        weights = m_distance_to_weight(distances, m_params);
-        predictions[i] = weights * distances;
+        DoubleVec observation = X_test.row(i);
+        DoubleVec obs_distance = calculate_all_distances(obs_distance);
+        DoubleVec weights = m_distance_to_weight(obs_distance, m_params);
+        predictions[i] = weights * obs_distance;
     }
     return predictions;
 }

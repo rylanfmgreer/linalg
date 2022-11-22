@@ -704,7 +704,7 @@ bool test44()
 
 bool test45()
 {
-    std::string filename = "test_data/two_d_rands.csv";
+    std::string filename = "rands_2.csv";
     Matrix X(filename);
     int n_means = 3;
     int n_iterations_per_round = 10;
@@ -728,7 +728,7 @@ bool test46()
 
     WeightedAvgRegression war(WeightFunc::equal_weights);
     war.fit(X, y);
-    DoubleVec yhat = war.predict(y);
+    DoubleVec yhat = war.predict(X);
     return false;
 
 }
