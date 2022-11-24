@@ -5,8 +5,16 @@
 
 #include "machine_learning.hpp"
 
+/*
+    Some utilities that will be used for KMeans.
+*/
 namespace KMeans_Utils
 {
+    /*
+        A POD struct so that we can have one function both
+        return the means and the cluster labels. This if
+        for greater efficiency.
+    */
     struct ResultOfRound
     {
     public:
@@ -16,10 +24,19 @@ namespace KMeans_Utils
 
 }; // end of namespace
 
-// TODO: reimplement as classification.
+/*
+    A KMeans "classifier."
+    TODO: reimplement using classification, NOT regression.
+*/
 class KMeans : public UnsupervisedRegression
 {
 public:
+    /*
+        Initialize. 
+        fit n_means clusters.
+        perform n_rounds fitting rounds, each with n_iterations_per_round
+        iterations per round.
+    */
     KMeans(int n_means, int n_rounds, int n_iterations_per_round);
     virtual void fit(const Matrix &X);
     virtual DoubleVec predict(const Matrix &X) const;
