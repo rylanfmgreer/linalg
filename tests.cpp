@@ -739,6 +739,30 @@ bool test46()
 
 }
 
+bool test47()
+{
+    RidgeRegression R0(0.);
+    RidgeRegression R1(1.);
+    LinearRegression L;
+
+    Matrix data("test_data/two_d_rands.csv");
+    Matrix X = data.drop_col(1);
+    DoubleVec y = data.col(1);
+
+    R0.fit(X, y);
+    R1.fit(X, y);
+    L.fit(X, y);
+
+    DoubleVec yhr0 = R0.predict(X);
+    DoubleVec yhr1 = R1.predict(X);
+    DoubleVec yhr  = L.predict(X);
+
+    if(yhr0 != yhr1)
+        return false;
+    if(yhr1 == yhr0)
+        return false;
+    return true;    
+}
 
 int main()
 {
@@ -793,6 +817,7 @@ int main()
     cout << " Test  44 results    " << test44() << endl;
     cout << " Test  45 results    " << test45() << endl;
     cout << " Test  46 results    " << test46() << endl;
+    cout << " Test  47 results    " << test47() << endl;
 
     cout << endl;
 }
