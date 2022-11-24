@@ -4,18 +4,18 @@ void LinearRegression::fit(const Matrix& X, const DoubleVec& y)
 {
     Matrix XTX = X.transpose().matmul(X);
     DoubleVec XTy = X.transpose() * y;
-    this->beta = XTX.invert() * XTy;
-    is_fit = true;
+    this->m_beta = XTX.invert() * XTy;
+    m_is_fit = true;
 }
 
 DoubleVec LinearRegression::predict(const Matrix& X) const
 {
-    assert(this->is_fit);
-    return X * beta;
+    assert(this->m_is_fit);
+    return X * m_beta;
 }
 
 DoubleVec LinearRegression::get_coefficients() const
 {
-    assert(this->is_fit);
-    return beta.deep_copy();
+    assert(this->m_is_fit);
+    return m_beta.deep_copy();
 }

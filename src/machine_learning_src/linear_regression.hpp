@@ -14,9 +14,9 @@ class LinearRegression: public SupervisedRegression
     virtual DoubleVec predict(const Matrix& X) const;
     DoubleVec get_coefficients() const;
 
-    private:
-    bool is_fit = false;
-    DoubleVec beta = DoubleVec(0);
+    protected:
+    bool m_is_fit = false;
+    DoubleVec m_beta = DoubleVec(0);
     
 }; // end of class
 

@@ -734,11 +734,7 @@ bool test46()
     double first_view = yhat.get(0);
     std::for_each(yhat.begin(), yhat.end(),
         [&test_succeded, first_view]( double x )
-        {
-            if(x != first_view)
-                test_succeded = false;
-        }
-    );
+        { if(x != first_view) test_succeded = false; });
     return test_succeded;
 
 }
