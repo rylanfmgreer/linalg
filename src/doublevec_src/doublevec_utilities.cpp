@@ -121,3 +121,19 @@ double DoubleVec::dot(const DoubleVec& v) const
 {
     return *this * v;
 }
+
+DoubleVec DoubleVec::normalize() const
+{
+    double dv_sum = sum();
+    assert( abs(dv_sum) > 1e-10 );
+    DoubleVec new_dv = this->deep_copy();
+    return (1.0 / dv_sum) * new_dv;
+}
+
+void DoubleVec::normalize_inplace()
+{
+    double dv_sum = sum();
+    assert( abs(dv_sum) > 1e-10 );
+    std::transform(data.begin(), data.end(), data.begin(),
+                  [dv_sum]( double x ){ return x / dv_sum; });
+}

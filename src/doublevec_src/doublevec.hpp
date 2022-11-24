@@ -1,3 +1,4 @@
+#pragma once
 #ifndef doublevec_hpp___1234567654321
 #define doublevec_hpp___1234567654321
 
@@ -170,6 +171,17 @@ public:
         Return the dot product of this and v
     */
     double dot(const DoubleVec& v) const;
+
+    /*
+        Return a copy of DoubleVec
+        where it sums to 1.
+    */
+    DoubleVec normalize() const;
+
+    /*
+        Modify doublevec in place so that it sums to one
+    */
+    void normalize_inplace();
 
     // Basic statistical functions.
     double sum() const;

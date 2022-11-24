@@ -1,4 +1,5 @@
 // Author: rgreer
+#pragma once
 #ifndef _matrix_hpp_fosun___
 #define _matrix_hpp_fosun___
 

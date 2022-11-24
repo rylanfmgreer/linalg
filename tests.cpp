@@ -704,7 +704,7 @@ bool test44()
 
 bool test45()
 {
-    std::string filename = "test_data/two_d_rands.csv";
+    std::string filename = "rands_2.csv";
     Matrix X(filename);
     int n_means = 3;
     int n_iterations_per_round = 10;
@@ -717,6 +717,52 @@ bool test45()
 
 }
 
+bool test46()
+{
+    std::string filename = "test_data/two_d_rands.csv";
+    Matrix X(filename);
+    DoubleVec y(X.nrow());
+    y[0] = 0.; // just in case...
+    std::transform(y.data.begin(), y.data.end() - 1,
+                   y.data.begin() + 1, [](double x){ return x + 1.; });
+
+    WeightedAvgRegression war(WeightFunc::equal_weights);
+    war.fit(X, y);
+    DoubleVec yhat = war.predict(X);
+
+    bool test_succeded = true;
+    double first_view = yhat.get(0);
+    std::for_each(yhat.begin(), yhat.end(),
+        [&test_succeded, first_view]( double x )
+        { if(x != first_view) test_succeded = false; });
+    return test_succeded;
+
+}
+
+bool test47()
+{
+    RidgeRegression R0(0.);
+    RidgeRegression R1(1.);
+    LinearRegression L;
+
+    Matrix data("test_data/two_d_rands.csv");
+    Matrix X = data.drop_col(1);
+    DoubleVec y = data.col(1);
+
+    R0.fit(X, y);
+    R1.fit(X, y);
+    L.fit(X, y);
+
+    DoubleVec yhr0 = R0.predict(X);
+    DoubleVec yhr1 = R1.predict(X);
+    DoubleVec yhr  = L.predict(X);
+
+    if(yhr0 == yhr1)
+        return false;
+    if(yhr0 != yhr)
+        return false;
+    return true;    
+}
 
 int main()
 {
@@ -770,6 +816,8 @@ int main()
     cout << " Test  43 results    " << test43() << endl;
     cout << " Test  44 results    " << test44() << endl;
     cout << " Test  45 results    " << test45() << endl;
+    cout << " Test  46 results    " << test46() << endl;
+    cout << " Test  47 results    " << test47() << endl;
 
     cout << endl;
 }

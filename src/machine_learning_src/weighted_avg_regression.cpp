@@ -2,10 +2,14 @@
 #include "../utilities_src/utility_functions.hpp"
 
 // for convenience, typedef the longer names.
-typedef std::function< DoubleVec(DoubleVec) > frnrn;
 
-WeightedAvgRegression::WeightedAvgRegression(frnrn p_dist_to_weight)
-: m_distance_to_weight(p_dist_to_weight){}
+WeightedAvgRegression::WeightedAvgRegression(
+    WeightFunc::two_vec_func p_dist_to_weight)
+: m_distance_to_weight(p_dist_to_weight)
+{
+    DoubleVec params(1); // dummy initialization
+    m_params = params;
+}
 
 void WeightedAvgRegression::fit(const Matrix& X, const DoubleVec& y)
 {
@@ -15,16 +19,16 @@ void WeightedAvgRegression::fit(const Matrix& X, const DoubleVec& y)
 
 DoubleVec WeightedAvgRegression::predict(const Matrix& X_test) const
 {
+    // todo: rewrite everything to be more efficient
     int n_observations = X_test.nrow();
     DoubleVec predictions(n_observations);
-    DoubleVec observation;
-    DoubleVec distances;
-    DoubleVec weights;
+
     for( int i(0); i < n_observations; ++i )
     {
-        distances = calculate_all_distances(observation);
-        weights = m_distance_to_weight(distances);
-        predictions[i] = weights * distances;
+        DoubleVec observation = X_test.row(i);
+        DoubleVec obs_distance = calculate_all_distances(observation);
+        DoubleVec weights = m_distance_to_weight(obs_distance, m_params);
+        predictions[i] = weights * y_train;
     }
     return predictions;
 }
@@ -57,4 +61,30 @@ namespace WeightFunc
         DoubleVec ret_dv(new_data);
         return ret_dv;
     }
+
+    DoubleVec exponential_weighting(DoubleVec distances, DoubleVec w)
+    {
+        assert( w.size() == 1 );
+        std::vector<double> new_data(distances.size());
+        double d_w = w[0];
+        std::transform(distances.data.begin(), distances.data.end(),
+                       new_data.begin(), [d_w]( double x )
+                       {
+                        return exp( -d_w * x * x );
+                       });
+        DoubleVec new_dv(new_data);
+        new_dv.normalize_inplace();
+        return new_dv;
+    }
+
+    DoubleVec equal_weights(DoubleVec distances, DoubleVec unused_arg)
+    {
+        std::vector<double> v(distances.size());
+        std::transform(v.begin(), v.end(), v.begin(), 
+                        [](double x){ return 1.; });
+        DoubleVec ret_dv(v);
+        ret_dv.normalize_inplace();
+        return ret_dv; 
+    }
+
 }
