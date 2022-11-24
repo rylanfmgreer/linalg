@@ -729,7 +729,17 @@ bool test46()
     WeightedAvgRegression war(WeightFunc::equal_weights);
     war.fit(X, y);
     DoubleVec yhat = war.predict(X);
-    return false;
+
+    bool test_succeded = true;
+    double first_view = yhat.get(0);
+    std::for_each(yhat.begin(), yhat.end(),
+        [&test_succeded, first_view]( double x )
+        {
+            if(x != first_view)
+                test_succeded = false;
+        }
+    );
+    return test_succeded;
 
 }
 
