@@ -28,7 +28,7 @@ DoubleVec WeightedAvgRegression::predict(const Matrix& X_test) const
         DoubleVec observation = X_test.row(i);
         DoubleVec obs_distance = calculate_all_distances(observation);
         DoubleVec weights = m_distance_to_weight(obs_distance, m_params);
-        predictions[i] = weights * obs_distance;
+        predictions[i] = weights * y_train;
     }
     return predictions;
 }
@@ -73,13 +73,18 @@ namespace WeightFunc
                         return exp( -d_w * x * x );
                        });
         DoubleVec new_dv(new_data);
+        new_dv.normalize_inplace();
         return new_dv;
     }
 
     DoubleVec equal_weights(DoubleVec distances, DoubleVec unused_arg)
     {
-        DoubleVec ones( distances.size(), 1.);
-        return ones;
+        std::vector<double> v(distances.size());
+        std::transform(v.begin(), v.end(), v.begin(), 
+                        [](double x){ return 1.; });
+        DoubleVec ret_dv(v);
+        ret_dv.normalize_inplace();
+        return ret_dv; 
     }
 
 }

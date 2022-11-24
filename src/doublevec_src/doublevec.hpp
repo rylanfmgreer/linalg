@@ -172,6 +172,17 @@ public:
     */
     double dot(const DoubleVec& v) const;
 
+    /*
+        Return a copy of DoubleVec
+        where it sums to 1.
+    */
+    DoubleVec normalize() const;
+
+    /*
+        Modify doublevec in place so that it sums to one
+    */
+    void normalize_inplace();
+
     // Basic statistical functions.
     double sum() const;
     double mean() const;
