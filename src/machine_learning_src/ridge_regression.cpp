@@ -10,7 +10,8 @@ void RidgeRegression::fit(const Matrix& X, const DoubleVec& y)
     Matrix lambda_I = Matrix(n) * m_lambda;
     Matrix XTXpLI = (X.T() * X + lambda_I);
     Matrix XTy = X.T() * y;
-    m_beta = XTXpLI.invert() * XTy;
+    this->m_beta = (XTXpLI.invert() * XTy).col(0);
+    m_is_fit = true;
 }
 
 void RidgeRegression::set_lambda(double p_lambda)

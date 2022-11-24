@@ -757,9 +757,9 @@ bool test47()
     DoubleVec yhr1 = R1.predict(X);
     DoubleVec yhr  = L.predict(X);
 
-    if(yhr0 != yhr1)
+    if(yhr0 == yhr1)
         return false;
-    if(yhr1 == yhr0)
+    if(yhr0 != yhr)
         return false;
     return true;    
 }

@@ -10,8 +10,19 @@
 class LinearRegression: public SupervisedRegression
 {
     public:
+    /*
+        Fit the linear regression.
+    */
     virtual void fit(const Matrix& X, const DoubleVec& y);
+
+    /*
+        If fit, predict the value.
+    */
     virtual DoubleVec predict(const Matrix& X) const;
+
+    /*
+        Return the coefficients.
+    */
     DoubleVec get_coefficients() const;
 
     protected:

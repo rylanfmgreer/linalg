@@ -6,14 +6,29 @@
 class RidgeRegression: public LinearRegression
 {
     public:
+
+    /*
+        Initialize the ridge regression.
+    */
     RidgeRegression(double p_lambda = 0);
+
+    /*
+        Fit the regression.
+    */
     virtual void fit(const Matrix& X, const DoubleVec& y);
+
+    /*
+        Set lambda
+    */
     void set_lambda(double p_lambda);
+
+    /*
+        Get lambda
+    */
     double get_lambda() const;
     
     protected:
     double m_lambda;
-    DoubleVec m_beta;
     
 };
 
