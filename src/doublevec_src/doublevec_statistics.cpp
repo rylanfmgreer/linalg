@@ -124,3 +124,20 @@ double DoubleVec::max() const
     return mx;
 
 }
+
+double DoubleVec::min() const
+{
+    double mn = 1.0 * DBL_MAX;
+    std::for_each(data.begin(), data.end(),
+                      [&mn](double x)
+                      {
+                          if (x <
+                          
+                          
+                          
+                           mn)
+                              mn = x;
+                      });
+    return mn;
+
+}

@@ -183,6 +183,11 @@ public:
     */
     void normalize_inplace();
 
+    /*
+        Determine whether it works as a probability measure
+    */
+    bool is_probability() const;
+
     // Basic statistical functions.
     double sum() const;
     double mean() const;

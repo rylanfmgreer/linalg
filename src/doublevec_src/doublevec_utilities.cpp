@@ -2,7 +2,7 @@
 #include <float.h>
 #include "doublevec.hpp"
 #include <algorithm>
-
+#include "../utilities_src/utility_functions.hpp"
 using namespace std;
 
 void DoubleVec::print()
@@ -136,4 +136,12 @@ void DoubleVec::normalize_inplace()
     assert( abs(dv_sum) > 1e-10 );
     std::transform(data.begin(), data.end(), data.begin(),
                   [dv_sum]( double x ){ return x / dv_sum; });
+}
+
+bool DoubleVec::is_probability() const
+{
+
+    bool sum_condition = util::close( sum() );
+    bool min_condition = (min() >= 0);
+    return sum_condition & min_condition;
 }
