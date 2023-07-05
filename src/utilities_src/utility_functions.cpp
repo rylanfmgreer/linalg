@@ -104,4 +104,12 @@ namespace util
         
     }
 
+    int compute_2_to_the_n(int n)
+    {
+        int res(1);
+        for(int i(0); i < n; ++i)
+            res <<= 1;
+        return res;
+    }
+
 } // of namespace
