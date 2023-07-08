@@ -108,7 +108,7 @@ public:
     /*
         Elementwise multiplication of two vectors.
     */
-    DoubleVec elementwise(const DoubleVec &p_v) const;
+    DoubleVec elementwise_multiply(const DoubleVec &p_v) const;
 
     /*
         Deep copy of a vector

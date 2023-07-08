@@ -112,7 +112,7 @@ bool test6()
 
     c[0] = 10;
     c[1] = 15;
-    return ((a.elementwise(b)) == c);
+    return ((a.elementwise_multiply(b)) == c);
 }
 
 // Test 7: vector contains element
@@ -413,9 +413,9 @@ bool test28()
         v[i] = i + 1.;
     }
     A[0] = v;
-    A[1] = v.elementwise(v);
-    A[2] = v.elementwise(v).elementwise(v);
-    A[3] = v.elementwise(v).elementwise(v).elementwise(v);
+    A[1] = v.elementwise_multiply(v);
+    A[2] = v.elementwise_multiply(v).elementwise_multiply(v);
+    A[3] = v.elementwise_multiply(v).elementwise_multiply(v).elementwise_multiply(v);
     return util::close(A.determinant(), 288.);
 }
 
