@@ -17,79 +17,79 @@ public:
     Complex();
 
     /*
-        Initialize as x + yi
+        Initialize as p_x + yi
     */
-    Complex(double x, double y);
+    Complex(double p_x, double p_y);
 
     /*
-        Initialize as x + 0i
+        Initialize as p_x + 0i
     */
-    Complex(double p_x); // re = x, im = 0
+    Complex(double p_x); // p_re = p_x, p_im = 0
 
     /*
         Complex addition
         a + bi + c + di = (a + c) + (b + d)i
     */
-    Complex operator+(const Complex &z) const;
+    Complex operator+(const Complex &p_z) const;
 
     /*
         complex + double
         a + bi + c = (a + c) + bi
     */
-    Complex operator+(double x) const;
-    Complex operator+(int n) const;
+    Complex operator+(double p_x) const;
+    Complex operator+(int p_n) const;
 
     /*
         subtract a real scalar from a complex number
     */
-    Complex operator-(double x) const;
-    Complex operator-(int n) const;
+    Complex operator-(double p_x) const;
+    Complex operator-(int p_n) const;
 
     /*
         divide a complex number by a real scalar
     */
-    Complex operator/(double x) const;
+    Complex operator/(double p_x) const;
 
     /*
         Complex subtraction. pretty much addition in reverse
     */
-    Complex operator-(const Complex &z) const;
+    Complex operator-(const Complex &p_z) const;
 
     /*
         Test for equality
-        z = a + bi
+        p_z = a + bi
         w = c + di
         a == c & b == d
     */
-    bool operator==(const Complex &z) const;
+    bool operator==(const Complex &p_z) const;
     
     /*
-        z = a + bi
+        p_z = a + bi
         a == x & b == 0
     */
-    bool operator==(const double x) const;
+    bool operator==(const double p_x) const;
 
     /*
         simple negation of == operator.
     */
-    bool operator!=(const Complex &z) const;
+    bool operator!=(const Complex &p_z) const;
 
     /*
         Multiplication of two complex numbers
     */
-    Complex operator*(const Complex &z) const;
+    Complex operator*(const Complex &p_z) const;
 
     /*
         Scalar multiplication of a complex number
         x * (a + bi) = xa + xbi
     */
-    Complex operator*(double x) const;
+    Complex operator*(double p_x) const;
 
     /*
         Division of two complex numbers
 
     */
-    Complex operator/(const Complex &z) const;
+    Complex operator/(const Complex &p_z) const;
 
     /*
         returns the scalar magnitude of the complex number
@@ -97,7 +97,7 @@ public:
     double magnitude() const;
 
     /*
-        for complex number z, returns w such that
+        for complex number p_z, returns w such that
         wz = zw = 1
     */
     Complex inverse() const;
@@ -110,7 +110,7 @@ public:
 
     /*
         For a complex number z,
-        z = r * exp(it)
+        z = p_r * exp(it)
         return t in [0, 2 * pi)
     */
     double angle() const;
@@ -127,45 +127,45 @@ public:
     void print() const;
 
     // the real and imaginary components of the number.
-    double re;
-    double im;
+    double m_re;
+    double m_im;
 };
 
 /*
-    Given coefficients an, ..., a0, return anz^n + ... + a0
+    Given p_coefficients an, ..., a0, return anz^n + ... + a0
 */
 Complex horner_polynomial(const std::vector<Complex> &v, const Complex z);
 
 /*
-    given coefficients an, ... a0 (real), return the roots of the polynomial
+    given p_coefficients an, ... a0 (real), return the roots of the polynomial
     anz^n + ... + a0
 */
-std::vector<Complex> durand_kerner(const std::vector<double> &coefficients,
-                                   double tolerance=1e-4,
-                                   int n_iterations=1000);
+std::vector<Complex> durand_kerner(const std::vector<double> &p_coefficients,
+                                   double p_tolerance=1e-4,
+                                   int p_n_iterations=1000);
 
 /*
     turn a vector of real numbers into complex numbers
 */
 std::vector<Complex> double_to_complex(
-    const std::vector<double> &coefficients);
+    const std::vector<double> &p_coefficients);
 
 /*
     turn two vectors of real numbers into a vector of
     complex numbers
 */
 std::vector<Complex> create_complex_vector(
-    const std::vector<double> &re, 
-    const std::vector<double> &im);
+    const std::vector<double> &p_re, 
+    const std::vector<double> &p_im);
 
 std::vector<Complex> create_complex_vector(
-    const DoubleVec &re, const DoubleVec &im);
+    const DoubleVec &p_re, const DoubleVec &p_im);
 
 /*
     convert degrees to radians and vice versa
 */
-double degrees_to_radians(double d);
-double radians_to_degrees(double r);
+double degrees_to_radians(double p_d);
+double radians_to_degrees(double p_r);
 
 
 

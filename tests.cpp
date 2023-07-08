@@ -653,7 +653,7 @@ bool test41()
     assert(z.magnitude() == r);
 
     Complex w = z + 1.;
-    return w.re == 2.;
+    return w.m_re == 2.;
 }
 
 // inverting a complex number
@@ -723,8 +723,8 @@ bool test46()
     Matrix X(filename);
     DoubleVec y(X.nrow());
     y[0] = 0.; // just in case...
-    std::transform(y.data.begin(), y.data.end() - 1,
-                   y.data.begin() + 1, [](double x){ return x + 1.; });
+    std::transform(y.m_data.begin(), y.m_data.end() - 1,
+                   y.m_data.begin() + 1, [](double x){ return x + 1.; });
 
     WeightedAvgRegression war(WeightFunc::equal_weights);
     war.fit(X, y);

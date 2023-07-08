@@ -19,86 +19,86 @@ public:
     DoubleVec();
 
     /*
-        Initialize with v as the elements.
+        Initialize with p_v as the elements.
     */
-    DoubleVec(const std::vector<double> &v);
+    DoubleVec(const std::vector<double> &p_f);
 
     /*
-        Vector with n elements, all set to zero.
+        Vector with p_n elements, all set to zero.
     */
-    DoubleVec(int n);
+    DoubleVec(int p_n);
 
     /*
-        Initialize a vector with the elements of v.
+        Initialize a vector with the elements of p_v.
     */
-    DoubleVec(const DoubleVec &v);
+    DoubleVec(const DoubleVec &p_v);
 
     /*
-        Vector with n elements, all set to x
+        Vector with p_n elements, all set to p_x
     */
-    DoubleVec(int n, double x);
+    DoubleVec(int p_n, double p_x);
 
     /*
         Worse version of numpy.arange.
-        Begin at start, end at end, elements are spaced by step.
-        The vector will have  [(end - start) // step + 1] elements.
+        Begin at p_start, p_end at p_end, elements are spaced by p_step.
+        The vector will have  [(p_end - p_start) // p_step + 1] elements.
     */
-    DoubleVec(double start, double end, double step); // think worse version of np.arange! 
+    DoubleVec(double p_start, double p_end, double p_step); // think worse version of np.arange! 
 
     /*
         Hacked together solution to read a single vector from a csv.
     */
-    DoubleVec(const std::string filename, int column_number, int start_row);
+    DoubleVec(const std::string p_filename, int p_col_number, int p_start_row);
 
     /*
         Add two vectors (elementwise addition)
     */
-    DoubleVec operator+(const DoubleVec &v) const;
+    DoubleVec operator+(const DoubleVec &p_v) const;
 
     /*
         Add a scalar to a vector
     */
-    DoubleVec operator+(const double scalar) const;
+    DoubleVec operator+(const double p_additor) const;
 
     /*
         Subtract two vectors (elementwise)
     */
-    DoubleVec operator-(const DoubleVec &v) const;
+    DoubleVec operator-(const DoubleVec &p_v) const;
 
     /*
         Subtract a scalar from a vector
     */
-    DoubleVec operator-(const double scalar) const;
+    DoubleVec operator-(const double p_subtractor) const;
 
     /*
         Vector dot product
     */
-    double operator*(const DoubleVec &v) const;
+    double operator*(const DoubleVec &p_v) const;
 
     /*
         Scalar multiplication of a vector
     */
-    DoubleVec operator*(const double scalar) const;
+    DoubleVec operator*(const double p_scalar) const;
 
     /*
         Determine whether two vectors are equal
     */
-    bool operator==(const DoubleVec &v) const;
+    bool operator==(const DoubleVec &p_v) const;
 
     /*
         Determine whether two vectors are not equal
     */
-    bool operator!=(const DoubleVec &v) const;
+    bool operator!=(const DoubleVec &p_v) const;
 
     /*
         Concatenate two vectors.
     */
-    DoubleVec concat(const DoubleVec &v) const;
+    DoubleVec concat(const DoubleVec &p_v) const;
 
     /*
         Elementwise multiplication of two vectors.
     */
-    DoubleVec elementwise(const DoubleVec &v) const;
+    DoubleVec elementwise(const DoubleVec &p_v) const;
 
     /*
         Deep copy of a vector
@@ -109,16 +109,16 @@ public:
         Apply a function f to every element of a vector
         (f: R -> R)
     */
-    DoubleVec apply(std::function<double(double)> f) const;
+    DoubleVec apply(std::function<double(double)> p_f) const;
 
     /*
         Drop the nth element of a vector.
         Not in-place
     */
-    DoubleVec drop_index(int n) const;
+    DoubleVec drop_index(int p_n) const;
 
     /*
-        For every index in v, drop that element
+        For every index in p_v, drop that element
         from the vector. Not in-place.
     */
     DoubleVec drop_index(std::vector<int> v) const;
@@ -131,7 +131,7 @@ public:
     /*
         Append a double to a vector.
     */
-    void push_back(double v) { data.push_back(v); }
+    void push_back(double v) { m_data.push_back(v); }
 
     /*
         Print every element of a vector
@@ -141,7 +141,7 @@ public:
     /*
         Return the number of elements in a vector.
     */
-    int size() const { return data.size(); }
+    int size() const { return m_data.size(); }
 
     /*
         Return a sorted version of a vector.
@@ -160,17 +160,17 @@ public:
 
         To assign, use the [] operator.
     */
-    double get(int r) const;
+    double get(int p_r) const;
 
     /*
-        Return the number of times v appears in the vector
+        Return the number of times p_v appears in the vector
     */
-    int count(double v, double eps = 1e-8) const;
+    int count(double p_v, double p_tolerance = 1e-8) const;
     
     /*
         Return the dot product of this and v
     */
-    double dot(const DoubleVec& v) const;
+    double dot(const DoubleVec& p_v) const;
 
     /*
         Return a copy of DoubleVec
@@ -206,31 +206,31 @@ public:
     DoubleVec centered_rolling_mean(int p_n_elements) const;
 
     // member data
-    std::vector<double> data;
+    std::vector<double> m_data;
 
     // iterator
     typedef std::vector<double>::iterator iterator;
     typedef std::vector<double>::const_iterator const_iterator;
-    iterator begin() { return data.begin(); }
-    iterator end() { return data.end(); }
+    iterator begin() { return m_data.begin(); }
+    iterator end() { return m_data.end(); }
 
     private:
 };
 
 // non-member functions for easy addition and multiplication
-inline DoubleVec operator+(double x, const DoubleVec &v) { return v + x; }
-inline DoubleVec operator*(double x, const DoubleVec &v) { return v * x; }
-inline DoubleVec operator-(double x, const DoubleVec &v) { return -1. * (v - x); }
-inline DoubleVec operator/(double x, const DoubleVec &v) { return v * (1 / x); }
+inline DoubleVec operator+(double p_x, const DoubleVec &p_v) { return p_v + p_x; }
+inline DoubleVec operator*(double p_x, const DoubleVec &p_v) { return p_v * p_x; }
+inline DoubleVec operator-(double p_x, const DoubleVec &p_v) { return -1. * (p_v - p_x); }
+inline DoubleVec operator/(double p_x, const DoubleVec &p_v) { return p_v * (1 / p_x); }
 
 // statistics functions that can be called on an individual doublevec
 // which are just a wrapper for the functions given above.
-double sum(const DoubleVec &v);
-double mean(const DoubleVec &v);
-double var(const DoubleVec &v);
-double stdev(const DoubleVec &v);
-double cov(const DoubleVec &v, const DoubleVec &w);
-double cor(const DoubleVec &v, const DoubleVec &w);
+double sum(const DoubleVec &p_v);
+double mean(const DoubleVec &p_v);
+double var(const DoubleVec &p_v);
+double stdev(const DoubleVec &p_v);
+double cov(const DoubleVec &p_v, const DoubleVec &p_w);
+double cor(const DoubleVec &p_v, const DoubleVec &p_w);
 
 DoubleVec cumsum(const DoubleVec &v);
 

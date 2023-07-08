@@ -16,14 +16,14 @@ DoubleVec::DoubleVec()
 {
     // Default initialization giving an empty vector.
     vector<double> d;
-    data = d;
+    m_data = d;
 }
 
 DoubleVec::DoubleVec(int n)
 {
     // Initialization giving a vector of length n, all zeroes.
     vector<double> d(n);
-    data = d;
+    m_data = d;
 }
 
 DoubleVec::DoubleVec(const vector<double> &v)
@@ -35,19 +35,19 @@ DoubleVec::DoubleVec(const vector<double> &v)
 
     vector<double> d(v.size());
     copy(v.begin(), v.end(), d.begin());
-    data = d;
+    m_data = d;
 }
 
 DoubleVec::DoubleVec(const DoubleVec &v)
 {
-    data = v.deep_copy().data;
+    m_data = v.deep_copy().m_data;
 }
 
 DoubleVec::DoubleVec(int n, double x)
 {
     // This initialization gives an n-dimensional vector containing x n times.
     vector<double> new_vec(n, x);
-    data = new_vec;
+    m_data = new_vec;
 }
 
 DoubleVec::DoubleVec(double start, double end, double step)
@@ -91,5 +91,5 @@ DoubleVec::DoubleVec(const std::string filename, int column_number, int start_ro
         row_num++;
     }
     csv.close();
-    data = v;
+    m_data = v;
 }

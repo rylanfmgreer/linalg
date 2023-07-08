@@ -13,7 +13,7 @@ using namespace std;
 // Sum
 double DoubleVec::sum() const
 {
-    return std::accumulate(data.begin(), data.end(), 0.);
+    return std::accumulate(m_data.begin(), m_data.end(), 0.);
 }
 
 double sum(const DoubleVec &v)
@@ -39,12 +39,12 @@ double DoubleVec::var() const
     // this must be manually adjusted for sample.
     double m(this->mean());
     double ssq(0);
-    for (int i(0); i < data.size(); ++i)
+    for (int i(0); i < m_data.size(); ++i)
     {
-        double sq = (data[i] - m);
+        double sq = (m_data[i] - m);
         ssq += sq * sq;
     }
-    return ssq / data.size();
+    return ssq / m_data.size();
 }
 
 double var(const DoubleVec &v)
@@ -101,7 +101,7 @@ DoubleVec DoubleVec::cumsum() const
     std::vector<double> new_vector(this->size());
     new_vector[0] = this->get(0);
     std::transform(new_vector.begin(), new_vector.end() - 1,
-                   this->data.begin() + 1, new_vector.begin() + 1,
+                   this->m_data.begin() + 1, new_vector.begin() + 1,
                    [](double x, double y)
                    { return x + y; });
     return DoubleVec(new_vector);
@@ -115,7 +115,7 @@ DoubleVec cumsum(const DoubleVec &v)
 double DoubleVec::max() const
 {
     double mx = -1.0 * DBL_MAX;
-    std::for_each(data.begin(), data.end(),
+    std::for_each(m_data.begin(), m_data.end(),
                       [&mx](double x)
                       {
                           if (x > mx)
