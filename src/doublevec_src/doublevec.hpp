@@ -198,6 +198,13 @@ public:
     double sq_norm() const;   // squared euclidean norm
     double norm() const;      // euclidean norm
 
+    /*
+    Rolling sum and mean.
+    */
+    DoubleVec rolling_sum(int p_n_elements, int p_n_offset) const;
+    DoubleVec rolling_mean(int p_n_elements, int p_n_offset) const;
+    DoubleVec centered_rolling_mean(int p_n_elements) const;
+
     // member data
     std::vector<double> data;
 
