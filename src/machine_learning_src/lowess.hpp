@@ -28,7 +28,12 @@ class Lowess: public SupervisedRegression
     void calculate_coefficients_for_fit();
     void calculate_alphas_for_fit();
     void calculate_betas_for_fit();
-
+    void calculate_basic_x_y_means();
+    void calculate_cross_products();
+    void calculate_squares_of_means();
+    void calculate_means_of_cross_products();
+    void calculate_covariances();
+    void calculate_intermediate_values_for_params();
 
     DoubleVec calculate_variance(
         const DoubleVec& p_mean_sq_vec, const DoubleVec& p_mean_vec_sq) const;
@@ -44,10 +49,15 @@ class Lowess: public SupervisedRegression
 
     DoubleVec m_x_mean;
     DoubleVec m_y_mean;
-    DoubleVec m_x_mean_sq;
 
-    DoubleVec m_x_times_x;
-    DoubleVec m_x_times_y;
+    DoubleVec m_x_x_mean;
+    DoubleVec m_x_y_mean;
+
+    DoubleVec m_x_mean_x_mean;
+    DoubleVec m_x_mean_y_mean;
+
+    DoubleVec m_x_x;
+    DoubleVec m_x_y;
 
     DoubleVec m_cov_x_x;
     DoubleVec m_cov_x_y;

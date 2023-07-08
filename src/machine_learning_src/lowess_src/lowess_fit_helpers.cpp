@@ -11,20 +11,49 @@ DoubleVec Lowess::calculate_rolling_mean_for_fit(const DoubleVec& p_vec) const
 }
 void Lowess::calculate_coefficients_for_fit()
 {
-    m_x_mean = calculate_rolling_mean_for_fit(m_x);
-    m_y_mean = calculate_rolling_mean_for_fit(m_y);
-    m_x_mean_sq = m_x_mean.elementwise_multiply(m_x_mean);
 
-    DoubleVec x_x = m_x.elementwise_multiply(m_x);
-    DoubleVec x_y = m_x.elementwise_multiply(m_y);
-    DoubleVec x_mean_y_mean = m_x_mean.elementwise_multiply(m_y_mean);
-    m_x_times_x = calculate_rolling_mean_for_fit(x_x);
-    m_x_times_y = calculate_rolling_mean_for_fit(x_y);
-    m_cov_x_x = calculate_variance(m_x_times_x, m_x_mean_sq);
-    m_cov_x_y = calculate_variance(m_x_times_y, x_mean_y_mean);
 
+    calculate_intermediate_values_for_params();
     calculate_betas_for_fit();
     calculate_alphas_for_fit();
+}
+
+void Lowess::calculate_intermediate_values_for_params()
+{
+    calculate_basic_x_y_means();
+    calculate_cross_products();
+    calculate_means_of_cross_products();
+    calculate_squares_of_means();
+    calculate_covariances();
+    
+}
+void Lowess::calculate_basic_x_y_means()
+{
+    m_x_mean = calculate_rolling_mean_for_fit(m_x);
+    m_y_mean = calculate_rolling_mean_for_fit(m_y);
+}
+
+void Lowess::calculate_cross_products()
+{
+    m_x_x = m_x.elementwise_multiply(m_x);
+    m_x_y = m_x.elementwise_multiply(m_y);
+}
+
+void Lowess::calculate_means_of_cross_products()
+{
+    m_x_x_mean = calculate_rolling_mean_for_fit(m_x_x);
+    m_x_y_mean = calculate_rolling_mean_for_fit(m_x_y);
+}
+void Lowess::calculate_squares_of_means()
+{
+    m_x_mean_x_mean = m_x_mean.elementwise_multiply(m_x_mean);
+    m_x_mean_y_mean = m_x_mean.elementwise_multiply(m_y_mean);
+}
+
+void Lowess::calculate_covariances()
+{
+    m_cov_x_x = calculate_variance(m_x_x_mean, m_x_mean_x_mean);
+    m_cov_x_y = calculate_variance(m_x_y_mean, m_x_mean_y_mean);
 }
 
 DoubleVec Lowess::calculate_variance(
