@@ -766,12 +766,29 @@ bool test47()
 
 bool test48()
 {
-    // rolling sum
+    // NOT COMPLETE
     DoubleVec dv(100, 1.);
     dv = dv.cumsum();
     DoubleVec rs = dv.rolling_sum(6, 3);
 
     return false;
+}
+
+bool test49()
+{
+    // incomplete, just sees whether we can actually
+    // fit at all!!
+    Matrix X(10, 1);
+    DoubleVec y(10);
+    Lowess Model(0.2);
+
+    for( int i(0); i < 10; ++i)
+    {
+        X(i, 0) = i;
+        y[i] = i * i;
+    }
+
+    Model.fit(X, y);
 }
 
 int main()

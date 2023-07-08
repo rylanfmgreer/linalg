@@ -7,7 +7,7 @@
 
 class Lowess: public SupervisedRegression
 {
-    Lowess(double p_frac);
+    Lowess(double p_frac=0.3);
 
     public:
     virtual void fit(const Matrix &p_X, const DoubleVec &p_y);
