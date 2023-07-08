@@ -81,6 +81,16 @@ public:
     DoubleVec operator*(const double p_scalar) const;
 
     /*
+        Scalar division of a vector
+    */
+    DoubleVec operator/(const double p_denominator) const;
+
+    /*
+        Elementwise division of a vector
+    */
+    DoubleVec operator/(const DoubleVec& p_v) const;
+
+    /*
         Determine whether two vectors are equal
     */
     bool operator==(const DoubleVec &p_v) const;
