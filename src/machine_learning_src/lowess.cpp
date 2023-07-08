@@ -25,10 +25,15 @@ void Lowess::save_x_and_y(const Matrix &p_X, const DoubleVec &p_y)
 void Lowess::fit(const Matrix &p_X, const DoubleVec &p_y)
 {
     save_x_and_y(p_X, p_y);
-    calculate_coefficients()
+    calculate_coefficients();
 
 }
 
+DoubleVec Lowess::predict(const Matrix& p_X) const
+{
+    DoubleVec ret;
+    return ret;
+}
 void Lowess::calculate_coefficients()
 {
     m_xx = calculate_xx(m_x);

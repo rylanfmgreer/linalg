@@ -10,8 +10,8 @@ class Lowess: public SupervisedRegression
     Lowess(double p_frac);
 
     public:
-    virtual void fit(const Matrix &X, const DoubleVec &y);
-    virtual DoubleVec predict(const Matrix &X) const;
+    virtual void fit(const Matrix &p_X, const DoubleVec &p_y);
+    virtual DoubleVec predict(const Matrix &p_X) const;
 
     private:
     double m_frac;
@@ -21,6 +21,7 @@ class Lowess: public SupervisedRegression
 
     DoubleVec calculate_xx(const DoubleVec& p_x) const;
     DoubleVec calculate_xy(const DoubleVec& p_x, const DoubleVec& p_y) const;
+    void save_x_and_y(const Matrix& p_X, const DoubleVec& p_y);
     void calculate_coefficients();
 
     DoubleVec m_x;
