@@ -11,8 +11,6 @@ DoubleVec Lowess::calculate_rolling_mean_for_fit(const DoubleVec& p_vec) const
 }
 void Lowess::calculate_coefficients_for_fit()
 {
-
-
     calculate_intermediate_values_for_params();
     calculate_betas_for_fit();
     calculate_alphas_for_fit();
