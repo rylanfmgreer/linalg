@@ -764,6 +764,15 @@ bool test47()
     return true;    
 }
 
+bool test48()
+{
+    // rolling sum
+    DoubleVec dv(100, 1.);
+    DoubleVec rs = dv.rolling_sum(6, 0);
+
+    return false;
+}
+
 int main()
 {
     cout << endl
@@ -818,6 +827,6 @@ int main()
     cout << " Test  45 results    " << test45() << endl;
     cout << " Test  46 results    " << test46() << endl;
     cout << " Test  47 results    " << test47() << endl;
-
+    cout << " Test  48 results    " << test48() << endl;
     cout << endl;
 }
