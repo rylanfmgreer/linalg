@@ -49,6 +49,7 @@ DoubleVec DoubleVec::operator-(const double scalar) const
     return *this + (-1. * scalar);
 }
 
+
 double DoubleVec::operator*(const DoubleVec &v) const
 {
     // Dot product: R^n x R^n -> R
@@ -92,4 +93,23 @@ bool DoubleVec::operator!=(const DoubleVec &v) const
             return true;
     }
     return false;
+}
+
+DoubleVec DoubleVec::operator/(const double p_denominator) const
+{
+    double scalar = 1. / p_denominator;
+    return *this * scalar;
+}
+
+
+DoubleVec DoubleVec::operator/(const DoubleVec& p_v) const
+{
+    assert(this->size() == p_v.size());
+    vector<double> new_data(p_v.size());
+    std::transform(m_data.begin(), m_data.end(), 
+                  p_v.m_data.begin(), new_data.begin(),
+                  [](double x, double y){ return x / y; }
+                  );
+    DoubleVec return_vector(new_data);
+    return return_vector;
 }
