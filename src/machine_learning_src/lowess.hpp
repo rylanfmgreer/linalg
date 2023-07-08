@@ -29,6 +29,10 @@ class Lowess: public SupervisedRegression
     void calculate_alphas_for_fit();
     void calculate_betas_for_fit();
 
+
+    DoubleVec calculate_variance(
+        const DoubleVec& p_mean_sq_vec, const DoubleVec& p_mean_vec_sq) const;
+
     // helpers for predicting
     Matrix calculate_raw_linear_estimates(const Matrix& p_X) const;
     Matrix calculate_weights_for_estimates(const Matrix& p_X) const;
@@ -37,12 +41,20 @@ class Lowess: public SupervisedRegression
 
     DoubleVec m_x;
     DoubleVec m_y;
+
     DoubleVec m_x_mean;
     DoubleVec m_y_mean;
-    DoubleVec m_x_squared;
+    DoubleVec m_x_mean_sq;
+
+    DoubleVec m_x_times_x;
     DoubleVec m_x_times_y;
+
+    DoubleVec m_cov_x_x;
+    DoubleVec m_cov_x_y;
+
     DoubleVec m_alphas;
     DoubleVec m_betas;
+
     int m_window_size;
     int m_offset_for_sum;
 };

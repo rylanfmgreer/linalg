@@ -13,20 +13,34 @@ void Lowess::calculate_coefficients_for_fit()
 {
     m_x_mean = calculate_rolling_mean_for_fit(m_x);
     m_y_mean = calculate_rolling_mean_for_fit(m_y);
-    m_x_squared = calculate_xx_for_fit(m_x);
-    m_x_times_y = calculate_xy_for_fit(m_x, m_y);
+    m_x_mean_sq = m_x_mean.elementwise_multiply(m_x_mean);
+
+    DoubleVec x_x = m_x.elementwise_multiply(m_x);
+    DoubleVec x_y = m_x.elementwise_multiply(m_y);
+    DoubleVec x_mean_y_mean = m_x_mean.elementwise_multiply(m_y_mean);
+    m_x_times_x = calculate_rolling_mean_for_fit(x_x);
+    m_x_times_y = calculate_rolling_mean_for_fit(x_y);
+    m_cov_x_x = calculate_variance(m_x_times_x, m_x_mean_sq);
+    m_cov_x_y = calculate_variance(m_x_times_y, x_mean_y_mean);
+
     calculate_betas_for_fit();
     calculate_alphas_for_fit();
 }
 
+DoubleVec Lowess::calculate_variance(
+    const DoubleVec& p_mean_sq_vec, const DoubleVec& p_mean_vec_sq) const
+{
+    return p_mean_sq_vec - p_mean_vec_sq ;
+}
+
 void Lowess::calculate_alphas_for_fit()
 {
-    m_alphas = m_y_mean - m_betas * m_x_mean;
+    m_alphas = m_y_mean - m_betas.elementwise_multiply(m_x_mean);
 }
 
 void Lowess::calculate_betas_for_fit()
 {
-    m_betas = m_x_times_y / m_x_squared;    
+    m_betas = m_cov_x_y / m_cov_x_x;    
 }
 
 void Lowess::calculate_window_size()
