@@ -789,6 +789,7 @@ bool test49()
     }
 
     Model.fit(X, y);
+    return false;
 }
 
 int main()
@@ -846,5 +847,7 @@ int main()
     cout << " Test  46 results    " << test46() << endl;
     cout << " Test  47 results    " << test47() << endl;
     cout << " Test  48 results    " << test48() << endl;
+    cout << " Test  49 results    " << test49() << endl;
+
     cout << endl;
 }
