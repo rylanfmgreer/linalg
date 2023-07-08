@@ -4,7 +4,7 @@
 
 Complex Complex::conjugate() const
 {
-    return Complex(this->re, -(this->im));
+    return Complex(this->m_re, -(this->m_im));
 }
 
 Complex Complex::conj() const
@@ -15,7 +15,7 @@ Complex Complex::conj() const
 double Complex::angle() const
 {
     double hyp = this->magnitude();
-    return acos(re / hyp);
+    return acos(m_re / hyp);
 }
 
 double Complex::theta() const

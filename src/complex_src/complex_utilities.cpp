@@ -6,7 +6,7 @@ using namespace std;
 
 double Complex::magnitude() const
 {
-    return sqrt(re * re + im * im);
+    return sqrt(m_re * m_re + m_im * m_im);
 }
 
 Complex Complex::inverse() const
@@ -19,20 +19,20 @@ Complex Complex::inverse() const
         [b a] d   0
     */
     assert(this->magnitude() > 0.);
-    double prefactor = 1. / (re * re + im * im);
-    double new_re = prefactor * re;
-    double new_im = -prefactor * im;
+    double prefactor = 1. / (m_re * m_re + m_im * m_im);
+    double new_re = prefactor * m_re;
+    double new_im = -prefactor * m_im;
     return Complex(new_re, new_im);
 }
 
 void Complex::print() const
 {
-    cout << re << " + " << im << 'i';
+    cout << m_re << " + " << m_im << 'i';
 }
 
 Complex Complex::copy() const
 {
-    return Complex(re, im);
+    return Complex(m_re, m_im);
 }
 
 std::vector<Complex> double_to_complex(const std::vector<double> &coefficients)
