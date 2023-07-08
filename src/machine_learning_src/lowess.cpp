@@ -34,6 +34,7 @@ DoubleVec Lowess::predict(const Matrix& p_X) const
     DoubleVec ret;
     return ret;
 }
+
 void Lowess::calculate_coefficients()
 {
     m_xx = calculate_xx(m_x);
