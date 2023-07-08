@@ -768,7 +768,8 @@ bool test48()
 {
     // rolling sum
     DoubleVec dv(100, 1.);
-    DoubleVec rs = dv.rolling_sum(6, 0);
+    dv = dv.cumsum();
+    DoubleVec rs = dv.rolling_sum(6, 3);
 
     return false;
 }

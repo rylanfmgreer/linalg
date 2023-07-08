@@ -213,6 +213,8 @@ public:
     typedef std::vector<double>::const_iterator const_iterator;
     iterator begin() { return data.begin(); }
     iterator end() { return data.end(); }
+
+    private:
 };
 
 // non-member functions for easy addition and multiplication

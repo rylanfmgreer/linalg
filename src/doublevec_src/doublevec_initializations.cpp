@@ -46,12 +46,8 @@ DoubleVec::DoubleVec(const DoubleVec &v)
 DoubleVec::DoubleVec(int n, double x)
 {
     // This initialization gives an n-dimensional vector containing x n times.
-    vector<double> data(n);
-
-    // there has to be a better algorithm than this...
-    std::transform(data.begin(), data.end(),
-                   data.begin(), [x](double y)
-                   { return x; });
+    vector<double> new_vec(n, x);
+    data = new_vec;
 }
 
 DoubleVec::DoubleVec(double start, double end, double step)
