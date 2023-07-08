@@ -51,10 +51,10 @@ double ParameterizedFunction::x_variable_W_constant_1d(DoubleVec x_)
     return z[0];
 }
 
-double ParameterizedFunction::x_variable_W_variable_1d(DoubleVec x_,
-                                                       DoubleVec W_)
+double ParameterizedFunction::x_variable_W_variable_1d(DoubleVec p_x,
+                                                       DoubleVec p_W)
 {
-    DoubleVec z = this->x_variable_W_variable(x_, W_);
+    DoubleVec z = this->x_variable_W_variable(p_x, p_W);
     assert(z.size() == 1);
     return z[0];
 }

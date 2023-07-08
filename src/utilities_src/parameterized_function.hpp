@@ -11,36 +11,36 @@ typedef std::function<DoubleVec(DoubleVec, DoubleVec)> two_vec_func;
 class ParameterizedFunction
 {
     /*
-        General function f(x, W) -> y
-        x in R^m, W in R^n, y in R^p
+        General function p_f(m_x, p_W) -> y
+        m_x in R^m, p_W in R^n, y in R^p
 
-        In general, we will think of the parameters W as the second input to
-        f, and the argument x as the first input.r
+        In general, we will think of the parameters p_W as the second input to
+        f, and the argument m_x as the first input.r
 
     */
 public:
     ParameterizedFunction();
-    ParameterizedFunction(two_vec_func f);
-    ParameterizedFunction(two_vec_func f, DoubleVec params);
+    ParameterizedFunction(two_vec_func p_f);
+    ParameterizedFunction(two_vec_func p_f, DoubleVec params);
 
-    DoubleVec operator()(DoubleVec x);
+    DoubleVec operator()(DoubleVec m_x);
     
-    void set_x(DoubleVec x);
-    void set_W(DoubleVec W);
-    void set_function(two_vec_func f);
+    void set_x(DoubleVec p_x);
+    void set_W(DoubleVec p_W);
+    void set_function(two_vec_func p_f);
 
-    DoubleVec x_variable_W_constant(DoubleVec x);
-    DoubleVec x_constant_W_variable(DoubleVec m_W);
-    DoubleVec x_variable_W_variable(DoubleVec x, DoubleVec m_W);
+    DoubleVec x_variable_W_constant(DoubleVec p_x);
+    DoubleVec x_constant_W_variable(DoubleVec p_W);
+    DoubleVec x_variable_W_variable(DoubleVec p_x, DoubleVec p_W);
 
     // potential 1d functions
-    double x_variable_W_constant_1d(DoubleVec x);
-    double x_variable_W_variable_1d(DoubleVec x, DoubleVec m_W);
+    double x_variable_W_constant_1d(DoubleVec p_x);
+    double x_variable_W_variable_1d(DoubleVec p_x, DoubleVec p_W);
 
 private:
     two_vec_func m_f;
     DoubleVec m_W;
-    DoubleVec x;
+    DoubleVec m_x;
 
 }; // of ParameterizedFunction class
 
