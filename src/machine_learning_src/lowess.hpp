@@ -3,7 +3,7 @@
 
 #include "machine_learning.hpp"
 #include <vector>
-#include "../matrix_src/matrix.hpp"
+#include "../doublevec_src/doublevec.hpp"
 
 class Lowess: public SupervisedRegression
 {
@@ -14,6 +14,12 @@ class Lowess: public SupervisedRegression
     Matrix m_lowess_params;
     DoubleVec m_initial_x_vals;
 
+    DoubleVec calculate_xx(const DoubleVec& p_x) const;
+    DoubleVec calculate_xy(const DoubleVec& p_x, const DoubleVec& p_y) const;
+    DoubleVec xx;
+    DoubleVec xy;
+    int window_size;
+    int offset_for_sum;
 };
 
 #endif
