@@ -13,8 +13,7 @@ class Lowess: public SupervisedRegression
     double m_frac;
     Matrix m_lowess_params;
     DoubleVec m_initial_x_vals;
-    
 
-}
+};
 
 #endif

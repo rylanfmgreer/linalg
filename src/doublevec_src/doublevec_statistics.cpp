@@ -124,3 +124,32 @@ double DoubleVec::max() const
     return mx;
 
 }
+
+
+DoubleVec DoubleVec::rolling_sum(int p_n_elements, int p_offset) const
+{
+    // todo: work in proper assertion on p_n_elements and p_offset
+    int n(this->size());
+    DoubleVec cs = this->cumsum();
+    DoubleVec results(n);
+
+    double first_repeated_value = cs[p_n_elements - 1];
+    double final_repeated_value = cs[n-1] - cs[n -p_n_elements - 1];
+
+    for(int i(0); i < p_offset; ++i)
+        results[i] = first_repeated_value;
+
+    for(int i(p_offset); i < n - p_offset; ++i)
+        results[i] = cs[i + p_offset] - cs[i + p_offset - p_n_elements];
+
+    for(int i(n - p_offset); i < n; ++i)
+        results[i] = final_repeated_value;
+
+    return results;
+}    
+
+DoubleVec DoubleVec::rolling_mean(int p_n_elements, int p_offset) const
+{
+    double factor = 1. / p_n_elements;
+    return this->rolling_sum(p_n_elements, p_offset) * factor;
+}
