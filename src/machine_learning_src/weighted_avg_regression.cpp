@@ -67,7 +67,7 @@ namespace WeightFunc
         assert( w.size() == 1 );
         std::vector<double> new_data(distances.size());
         double d_w = w[0];
-        std::transform(distances.data.begin(), distances.data.end(),
+        std::transform(distances.m_data.begin(), distances.m_data.end(),
                        new_data.begin(), [d_w]( double x )
                        {
                         return exp( -d_w * x * x );

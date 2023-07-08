@@ -10,7 +10,7 @@ namespace f_dv
     double max(const DoubleVec &v)
     {
         double mx = -1.0 * DBL_MAX;
-        std::for_each(v.data.begin(), v.data.end(),
+        std::for_each(v.m_data.begin(), v.m_data.end(),
                       [&mx](double x)
                       {
                           if (x > mx)
@@ -22,7 +22,7 @@ namespace f_dv
     double min(const DoubleVec &v)
     {
         double mn = DBL_MAX;
-        std::for_each(v.data.begin(), v.data.end(),
+        std::for_each(v.m_data.begin(), v.m_data.end(),
                       [&mn](double x)
                       {
                           if (x < mn)

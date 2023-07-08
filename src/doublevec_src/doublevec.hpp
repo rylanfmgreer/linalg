@@ -19,24 +19,24 @@ public:
     DoubleVec();
 
     /*
-        Initialize with v as the elements.
+        Initialize with p_v as the elements.
     */
-    DoubleVec(const std::vector<double> &v);
+    DoubleVec(const std::vector<double> &p_v);
 
     /*
-        Vector with n elements, all set to zero.
+        Vector with p_n elements, all set to zero.
     */
-    DoubleVec(int n);
+    DoubleVec(int p_n);
 
     /*
         Initialize a vector with the elements of v.
     */
-    DoubleVec(const DoubleVec &v);
+    DoubleVec(const DoubleVec &p_v);
 
     /*
-        Vector with n elements, all set to x
+        Vector with p_n elements, all set to p_x
     */
-    DoubleVec(int n, double x);
+    DoubleVec(int p_n, double p_x);
 
     /*
         Worse version of numpy.arange.
@@ -131,7 +131,7 @@ public:
     /*
         Append a double to a vector.
     */
-    void push_back(double v) { data.push_back(v); }
+    void push_back(double v) { m_data.push_back(v); }
 
     /*
         Print every element of a vector
@@ -141,7 +141,7 @@ public:
     /*
         Return the number of elements in a vector.
     */
-    int size() const { return data.size(); }
+    int size() const { return m_data.size(); }
 
     /*
         Return a sorted version of a vector.
@@ -206,13 +206,13 @@ public:
     DoubleVec centered_rolling_mean(int p_n_elements) const;
 
     // member data
-    std::vector<double> data;
+    std::vector<double> m_data;
 
     // iterator
     typedef std::vector<double>::iterator iterator;
     typedef std::vector<double>::const_iterator const_iterator;
-    iterator begin() { return data.begin(); }
-    iterator end() { return data.end(); }
+    iterator begin() { return m_data.begin(); }
+    iterator end() { return m_data.end(); }
 
     private:
 };

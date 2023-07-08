@@ -75,5 +75,5 @@ std::vector<Complex> create_complex_vector(
 std::vector<Complex> create_complex_vector(
     const DoubleVec &re, const DoubleVec &im)
 {
-    return create_complex_vector(re.data, im.data);
+    return create_complex_vector(re.m_data, im.m_data);
 }
