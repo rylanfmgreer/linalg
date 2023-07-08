@@ -4,13 +4,6 @@
 #include "../doublevec_src/functions_on_doublevecs.hpp"
 using namespace std;
 
-namespace utils
-{
-    bool close(double a, double b, double epsilon = 1e-8)
-    {
-        return (std::abs((a - b)) < epsilon);
-    }
-} // end of namespace
 
 int Matrix::nrow() const
 {
