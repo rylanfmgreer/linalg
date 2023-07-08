@@ -27,9 +27,10 @@ class Lowess: public SupervisedRegression
     void calculate_coefficients_for_fit();
 
     // helpers for predicting
-    DoubleVec calculate_raw_linear_estimates(const Matrix& p_X) const;
+    Matrix calculate_raw_linear_estimates(const Matrix& p_X) const;
     Matrix calculate_weights_for_estimates(const Matrix& p_X) const;
-    DoubleVec calculate_full_predictions(const Matrix& p_X) const;
+    DoubleVec calculate_full_predictions(
+        const Matrix& p_raw_est, const Matrix& p_weights) const;
 
     DoubleVec m_x;
     DoubleVec m_y;

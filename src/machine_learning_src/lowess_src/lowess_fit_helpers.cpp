@@ -34,8 +34,3 @@ void Lowess::save_x_and_y_for_fit(const Matrix &p_X, const DoubleVec &p_y)
     m_y = p_y;
 }
 
-void Lowess::fit(const Matrix &p_X, const DoubleVec &p_y)
-{
-    save_x_and_y_for_fit(p_X, p_y);
-    calculate_coefficients_for_fit();
-}
