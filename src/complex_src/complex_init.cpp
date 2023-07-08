@@ -2,18 +2,18 @@
 
 Complex::Complex()
 {
-    re = 0;
-    im = 0;
+    m_re = 0;
+    m_im = 0;
 }
 
 Complex::Complex(double x, double y)
 {
-    re = x;
-    im = y;
+    m_re = x;
+    m_im = y;
 }
 
 Complex::Complex(double x)
 {
-    re = x;
-    im = 0;
+    m_re = x;
+    m_im = 0;
 }

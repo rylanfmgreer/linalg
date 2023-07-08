@@ -17,79 +17,79 @@ public:
     Complex();
 
     /*
-        Initialize as x + yi
+        Initialize as p_x + yi
     */
-    Complex(double x, double y);
+    Complex(double p_x, double p_y);
 
     /*
-        Initialize as x + 0i
+        Initialize as p_x + 0i
     */
-    Complex(double p_x); // re = x, im = 0
+    Complex(double p_x); // re = p_x, im = 0
 
     /*
         Complex addition
         a + bi + c + di = (a + c) + (b + d)i
     */
-    Complex operator+(const Complex &z) const;
+    Complex operator+(const Complex &p_z) const;
 
     /*
         complex + double
         a + bi + c = (a + c) + bi
     */
-    Complex operator+(double x) const;
-    Complex operator+(int n) const;
+    Complex operator+(double p_x) const;
+    Complex operator+(int p_n) const;
 
     /*
         subtract a real scalar from a complex number
     */
-    Complex operator-(double x) const;
-    Complex operator-(int n) const;
+    Complex operator-(double p_x) const;
+    Complex operator-(int p_n) const;
 
     /*
         divide a complex number by a real scalar
     */
-    Complex operator/(double x) const;
+    Complex operator/(double p_x) const;
 
     /*
         Complex subtraction. pretty much addition in reverse
     */
-    Complex operator-(const Complex &z) const;
+    Complex operator-(const Complex &p_z) const;
 
     /*
         Test for equality
-        z = a + bi
+        p_z = a + bi
         w = c + di
         a == c & b == d
     */
-    bool operator==(const Complex &z) const;
+    bool operator==(const Complex &p_z) const;
     
     /*
-        z = a + bi
+        p_z = a + bi
         a == x & b == 0
     */
-    bool operator==(const double x) const;
+    bool operator==(const double p_x) const;
 
     /*
         simple negation of == operator.
     */
-    bool operator!=(const Complex &z) const;
+    bool operator!=(const Complex &p_z) const;
 
     /*
         Multiplication of two complex numbers
     */
-    Complex operator*(const Complex &z) const;
+    Complex operator*(const Complex &p_z) const;
 
     /*
         Scalar multiplication of a complex number
         x * (a + bi) = xa + xbi
     */
-    Complex operator*(double x) const;
+    Complex operator*(double p_x) const;
 
     /*
         Division of two complex numbers
 
     */
-    Complex operator/(const Complex &z) const;
+    Complex operator/(const Complex &p_z) const;
 
     /*
         returns the scalar magnitude of the complex number
@@ -97,7 +97,7 @@ public:
     double magnitude() const;
 
     /*
-        for complex number z, returns w such that
+        for complex number p_z, returns w such that
         wz = zw = 1
     */
     Complex inverse() const;
@@ -127,8 +127,8 @@ public:
     void print() const;
 
     // the real and imaginary components of the number.
-    double re;
-    double im;
+    double m_re;
+    double m_im;
 };
 
 /*

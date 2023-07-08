@@ -653,7 +653,7 @@ bool test41()
     assert(z.magnitude() == r);
 
     Complex w = z + 1.;
-    return w.re == 2.;
+    return w.m_re == 2.;
 }
 
 // inverting a complex number
