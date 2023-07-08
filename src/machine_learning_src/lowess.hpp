@@ -19,10 +19,13 @@ class Lowess: public SupervisedRegression
     DoubleVec m_initial_x_vals;
 
 
-    DoubleVec calculate_xx(const DoubleVec& p_x) const;
-    DoubleVec calculate_xy(const DoubleVec& p_x, const DoubleVec& p_y) const;
-    void save_x_and_y(const Matrix& p_X, const DoubleVec& p_y);
-    void calculate_coefficients();
+    DoubleVec calculate_xx_for_fit(const DoubleVec& p_x) const;
+    DoubleVec calculate_xy_for_fit(const DoubleVec& p_x, const DoubleVec& p_y) const;
+    void save_x_and_y_for_fit(const Matrix& p_X, const DoubleVec& p_y);
+    void calculate_coefficients_for_fit();
+
+    DoubleVec calculate_predictions(const Matrix& p_X);
+    DoubleVec calculate_weights_on_predictions(const Matrix& p_X);
 
     DoubleVec m_x;
     DoubleVec m_y;
