@@ -15,7 +15,6 @@ void Lowess::calculate_coefficients_for_fit()
     m_y_mean = calculate_rolling_mean_for_fit(m_y);
     m_x_squared = calculate_xx_for_fit(m_x);
     m_x_times_y = calculate_xy_for_fit(m_x, m_y);
-    m_x_mean = m_x.rolling_mean(m_window_size, m_offset_for_sum);
     calculate_betas_for_fit();
     calculate_alphas_for_fit();
 }
