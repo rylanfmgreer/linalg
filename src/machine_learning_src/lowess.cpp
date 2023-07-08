@@ -26,7 +26,6 @@ void Lowess::fit(const Matrix &p_X, const DoubleVec &p_y)
 {
     save_x_and_y(p_X, p_y);
     calculate_coefficients();
-
 }
 
 DoubleVec Lowess::predict(const Matrix& p_X) const
