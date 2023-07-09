@@ -8,5 +8,6 @@ namespace f_dv
     double mean(const DoubleVec &v);
     double max(const DoubleVec &v);
     double min(const DoubleVec &v);
+    double sum(const DoubleVec& p_v);
 };
 #endif
