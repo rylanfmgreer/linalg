@@ -794,6 +794,29 @@ bool test49()
     return false;
 }
 
+bool test50()
+{
+    // incomplete, just sees whether we can actually
+    // fit at all!!
+    int n(100);
+    Matrix X(n, 1);
+    DoubleVec y(n);
+    Lowess Model(0.3);
+
+    for( int i(0); i < n; ++i)
+    {
+        X(i, 0) = i;
+        y[i] = log( double(i) );
+    }
+
+    Matrix new_X(1000, 1);
+
+    Model.fit(X, y);
+    DoubleVec yhat = Model.predict(new_X);
+    yhat.print();
+    return false;
+}
+
 int main()
 {
     cout << endl
@@ -850,6 +873,6 @@ int main()
     cout << " Test  47 results    " << test47() << endl;
     cout << " Test  48 results    " << test48() << endl;
     cout << " Test  49 results    " << test49() << endl;
-
+    cout << " Test  50 results    " << test50() << endl;
     cout << endl;
 }
