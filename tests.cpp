@@ -803,13 +803,16 @@ bool test50()
     DoubleVec y(n);
     Lowess Model(0.3);
 
-    for( int i(0); i < n; ++i)
+    for( int i(1); i < n+1; ++i)
     {
-        X(i, 0) = i;
-        y[i] = log( double(i) );
+        X(i-1, 0) = i;
+        y[i-1] = log( double(i) );
     }
 
-    Matrix new_X(1000, 1);
+    int m(1000);
+    Matrix new_X(m, 1);
+    for( int i(1); i < m + 1; ++i)
+        new_X(i-1, 0) = double(i) / 10.;
 
     Model.fit(X, y);
     DoubleVec yhat = Model.predict(new_X);

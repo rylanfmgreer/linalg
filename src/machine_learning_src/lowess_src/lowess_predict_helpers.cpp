@@ -10,13 +10,13 @@ Matrix Lowess::calculate_raw_linear_estimates(const Matrix& p_X) const
     */
     DoubleVec x = p_X.col(0);
     std::vector<DoubleVec> matrix_cols;
-    for( int c(0); c < m_y.size(); ++c)
+    for( int c(0); c < x.size(); ++c)
     {
         DoubleVec estimates =(x[c] * m_betas) + m_alphas;
         matrix_cols.push_back(estimates);
     }
     Matrix full_matrix(matrix_cols);
-     return full_matrix;
+    return full_matrix;
 }
 
 Matrix Lowess::calculate_weights_for_estimates(const Matrix& p_X) const
@@ -27,7 +27,7 @@ Matrix Lowess::calculate_weights_for_estimates(const Matrix& p_X) const
 DoubleVec Lowess::calculate_full_predictions(
     const Matrix& p_raw_est, const Matrix& p_weights) const
 {    
-    DoubleVec predictions(p_raw_est.nrow());
+    DoubleVec predictions(p_raw_est.ncol());
     for( int i(0); i < predictions.size(); ++i)
         predictions[i] = p_raw_est.col(i) * p_weights.col(i);
     return predictions;
