@@ -789,6 +789,7 @@ bool test49()
     }
 
     Model.fit(X, y);
+    Model.predict(X);
     return false;
 }
 
