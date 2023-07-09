@@ -1,4 +1,6 @@
 #include "../lowess.hpp"
+#include "../../doublevec_src/doublevec.hpp"
+#include "../../matrix_src/matrix.hpp"
 #include "../kernel_src/kernel.hpp"
 
 Matrix Lowess::calculate_raw_linear_estimates(const Matrix& p_X) const
@@ -24,7 +26,9 @@ Matrix Lowess::calculate_weights_for_estimates(const Matrix& p_X) const
 
 DoubleVec Lowess::calculate_full_predictions(
     const Matrix& p_raw_est, const Matrix& p_weights) const
-{
-    Matrix test = p_weights.matmul(p_raw_est);
-    return test.sum_by_row();
+{    
+    DoubleVec predictions(p_raw_est.nrow());
+    for( int i(0); i < predictions.size(); ++i)
+        predictions[i] = p_raw_est.col(i) * p_weights.col(i);
+    return predictions;
 }

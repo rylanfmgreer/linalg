@@ -789,7 +789,8 @@ bool test49()
     }
 
     Model.fit(X, y);
-    Model.predict(X);
+    DoubleVec yhat = Model.predict(X);
+    yhat.print();
     return false;
 }
 
