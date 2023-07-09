@@ -2,6 +2,11 @@
 #include <float.h>
 namespace f_dv
 {
+    double sum(const DoubleVec& p_v)
+    {
+        return p_v.sum();
+    }
+    
     double mean(const DoubleVec &v)
     {
         return v.mean();
@@ -30,5 +35,7 @@ namespace f_dv
                       });
         return mn;
     }
+
+
 
 };

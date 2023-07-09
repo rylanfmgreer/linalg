@@ -13,7 +13,7 @@ void DoubleVec::print()
     }
 }
 
-DoubleVec DoubleVec::elementwise(const DoubleVec &w) const
+DoubleVec DoubleVec::elementwise_multiply(const DoubleVec &w) const
 {
     // Elementwise (or Hadamard) product of two vectors.
     assert(this->size() == w.size());

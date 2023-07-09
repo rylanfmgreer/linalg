@@ -11,5 +11,6 @@
 #include "src/utilities_src/parameterized_function.hpp"
 #include "src/machine_learning_src/weighted_avg_regression.hpp"
 #include "src/machine_learning_src/ridge_regression.hpp"
+#include "src/machine_learning_src/lowess.hpp"
 
 #endif

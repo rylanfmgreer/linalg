@@ -112,7 +112,7 @@ bool test6()
 
     c[0] = 10;
     c[1] = 15;
-    return ((a.elementwise(b)) == c);
+    return ((a.elementwise_multiply(b)) == c);
 }
 
 // Test 7: vector contains element
@@ -413,9 +413,9 @@ bool test28()
         v[i] = i + 1.;
     }
     A[0] = v;
-    A[1] = v.elementwise(v);
-    A[2] = v.elementwise(v).elementwise(v);
-    A[3] = v.elementwise(v).elementwise(v).elementwise(v);
+    A[1] = v.elementwise_multiply(v);
+    A[2] = v.elementwise_multiply(v).elementwise_multiply(v);
+    A[3] = v.elementwise_multiply(v).elementwise_multiply(v).elementwise_multiply(v);
     return util::close(A.determinant(), 288.);
 }
 
@@ -766,11 +766,31 @@ bool test47()
 
 bool test48()
 {
-    // rolling sum
+    // NOT COMPLETE
     DoubleVec dv(100, 1.);
     dv = dv.cumsum();
     DoubleVec rs = dv.rolling_sum(6, 3);
 
+    return false;
+}
+
+bool test49()
+{
+    // incomplete, just sees whether we can actually
+    // fit at all!!
+    Matrix X(10, 1);
+    DoubleVec y(10);
+    Lowess Model(0.2);
+
+    for( int i(0); i < 10; ++i)
+    {
+        X(i, 0) = i;
+        y[i] = i * i;
+    }
+
+    Model.fit(X, y);
+    DoubleVec yhat = Model.predict(X);
+    yhat.print();
     return false;
 }
 
@@ -829,5 +849,7 @@ int main()
     cout << " Test  46 results    " << test46() << endl;
     cout << " Test  47 results    " << test47() << endl;
     cout << " Test  48 results    " << test48() << endl;
+    cout << " Test  49 results    " << test49() << endl;
+
     cout << endl;
 }

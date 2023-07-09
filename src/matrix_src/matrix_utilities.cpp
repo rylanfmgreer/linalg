@@ -244,3 +244,30 @@ DoubleVec Matrix::function_by_row(std::function<double(DoubleVec)> f) const
     Matrix AT = this->transpose();
     return AT.function_by_col(f);
 }
+
+DoubleVec Matrix::sum_by_row() const
+{
+    return this->function_by_row(f_dv::sum);
+}
+
+Matrix Matrix::sum_to_one_by_row() const
+{
+    /*
+        surely this can be rewritten more
+        easily by applying some of the 
+        functions we already have
+    */
+    DoubleVec sums = this->sum_by_row();
+    Matrix this_copy = this->deep_copy();
+    double factor;
+
+    for(int r(0); r < this->nrow(); ++r)
+    {
+        factor = 1. / sums[r];
+        for(int c(0); c < this->ncol(); ++c)
+        {
+            this_copy(r, c) = this_copy(r, c) * factor;
+        }
+    }
+    return this_copy;
+}

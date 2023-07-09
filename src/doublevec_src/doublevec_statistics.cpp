@@ -72,7 +72,7 @@ double DoubleVec::cov(const DoubleVec &v) const
     w = w - w.mean();
 
     DoubleVec y = v - v.mean();
-    DoubleVec z = w.elementwise(y);
+    DoubleVec z = w.elementwise_multiply(y);
     return z.mean();
 }
 
