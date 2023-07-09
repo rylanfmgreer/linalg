@@ -5,6 +5,7 @@
 #include "machine_learning.hpp"
 #include "../doublevec_src/doublevec.hpp"
 #include "../utilities_src/parameterized_function.hpp"
+#include "kernel_src/kernel.hpp"
 
 class Lowess: public SupervisedRegression
 {
@@ -65,8 +66,8 @@ class Lowess: public SupervisedRegression
     Matrix calculate_raw_linear_estimates(const Matrix& p_X) const;
     Matrix calculate_weights_for_estimates(const Matrix& p_X) const;
     DoubleVec calculate_full_predictions(
-        const Matrix& p_raw_est, const Matrix& p_weights) const;
-
+        const Matrix& p_raw_est, const Matrix& p_weights) const; 
+    Kernel m_kernel;
 
 };
 

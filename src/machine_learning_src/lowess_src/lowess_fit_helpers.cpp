@@ -23,8 +23,8 @@ void Lowess::calculate_intermediate_values_for_params()
     calculate_means_of_cross_products();
     calculate_squares_of_means();
     calculate_covariances();
-    
 }
+
 void Lowess::calculate_basic_x_y_means()
 {
     m_x_mean = calculate_rolling_mean_for_fit(m_x);

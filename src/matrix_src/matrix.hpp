@@ -267,6 +267,17 @@ public:
     */
     DoubleVec function_by_row(std::function<double(DoubleVec)> p_f) const;
 
+    /*
+        Get the sums by row.
+    */
+    DoubleVec sum_by_row() const;
+
+    /*
+        Get a version of the matrix
+        where all the rows sum to one.
+    */
+    Matrix sum_to_one_by_row() const;
+
 private:
     /*
         The columns of the matrix.
