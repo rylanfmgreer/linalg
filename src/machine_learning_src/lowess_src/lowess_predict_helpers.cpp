@@ -1,5 +1,7 @@
 #include "../lowess.hpp"
 
+
+
 Matrix Lowess::calculate_raw_linear_estimates(const Matrix& p_X) const
 {
     Matrix ret;

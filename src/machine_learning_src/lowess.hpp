@@ -1,9 +1,10 @@
 #ifndef _lowess_hpp___rg123
 #define _lowess_hpp___rg123
 
-#include "machine_learning.hpp"
 #include <vector>
+#include "machine_learning.hpp"
 #include "../doublevec_src/doublevec.hpp"
+#include "../utilities_src/parameterized_function.hpp"
 
 class Lowess: public SupervisedRegression
 {
@@ -65,6 +66,7 @@ class Lowess: public SupervisedRegression
     Matrix calculate_weights_for_estimates(const Matrix& p_X) const;
     DoubleVec calculate_full_predictions(
         const Matrix& p_raw_est, const Matrix& p_weights) const;
+
 
 };
 
